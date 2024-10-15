@@ -1,0 +1,25 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "next/core-web-vitals", // Next.js recommended linting rules
+    "eslint:recommended", // Basic ESLint recommended rules
+    "plugin:@typescript-eslint/recommended", // TypeScript rules
+    "plugin:prettier/recommended" // Integrates Prettier with ESLint
+  ],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "warn", // Use 'import type' consistently
+    "prettier/prettier": ["error"] // Ensure Prettier rules are enforced
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Automatically detect the React version
+    }
+  }
+}

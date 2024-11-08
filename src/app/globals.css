@@ -16,3 +16,7 @@
     @apply header4;
   }
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+}

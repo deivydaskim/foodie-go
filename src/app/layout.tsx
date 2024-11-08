@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 
+import Header from '@/components/Header';
 import './globals.css';
 
 const poppins = Poppins({
@@ -22,7 +23,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} bg-gradient-bg min-h-screen`}>
+      <body className={`${poppins.variable} min-h-screen bg-gradient-bg`}>
+        <Header />
         {children}
       </body>
     </html>

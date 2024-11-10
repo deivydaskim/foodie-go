@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Button from './Button';
 import DeliverySwitch from './DeliverySwitch';
-import ShoppingCart from './ShoppingCart';
+import ShoppingCartButton from './ShoppingCartButton';
 
 const Header = () => {
   return (
@@ -19,14 +19,14 @@ const Header = () => {
         </Link>
         <DeliverySwitch />
       </div>
-      {/* location and action buttons */}
+      {/* Location and action buttons */}
       <div className="flex flex-1 justify-between">
         <div className="flex items-center gap-2">
           <NavigationIcon className="text-green" />
           <p className="text-black">136 Greenpoint Ave</p>
         </div>
         <div className="flex flex-wrap items-center justify-end gap-1 md:gap-4">
-          <ShoppingCart />
+          <ShoppingCartButton />
           <Button variant="secondary">Sign in</Button>
           <Button variant="primary">Create account</Button>
         </div>

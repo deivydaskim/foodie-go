@@ -4,7 +4,7 @@ import ShoppingCartIcon from '@/assets/basic-icons/shopping-cart-icon.svg';
 import useClickOutside from '@/hooks/useClickOutside';
 import { useState } from 'react';
 import Button from './Button';
-import CartDetails from './ShoppingCartDetails';
+import ShoppingCartDetails from './ShoppingCartDetails';
 
 const ShoppingCartButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +12,6 @@ const ShoppingCartButton = () => {
   const toggleShowDetails = () => setIsOpen(prev => !prev);
   const close = () => setIsOpen(false);
 
-  // Get ref from the hook
   const ShoppingCartRef = useClickOutside(close);
 
   return (
@@ -28,7 +27,7 @@ const ShoppingCartButton = () => {
         </span>
       </Button>
 
-      {isOpen && <CartDetails onClose={close} />}
+      {isOpen && <ShoppingCartDetails onClose={close} />}
     </div>
   );
 };

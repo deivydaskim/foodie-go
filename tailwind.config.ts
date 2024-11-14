@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-bg': 'linear-gradient(to bottom, #FFFFFF, #CFD8DC)',
+        'gradient-bg': 'linear-gradient(to bottom, #F5F7F8, #CFD8DC)',
       },
       colors: {
         gray: {
@@ -73,6 +73,23 @@ const config: Config = {
         '.body2': {
           fontSize: '1rem', // 16px
           fontWeight: '600',
+        },
+        '.scrollbar-hide::-webkit-scrollbar': {
+          display: 'none' /* (Chrome, Safari and Opera) */,
+        },
+        '.scrollbar-hide': {
+          '-ms-overflow-style': 'none' /* IE and Edge */,
+          'scrollbar-width': 'none' /* Firefox */,
+        },
+        '.scrollbar-thin': {
+          'scrollbar-width': 'thin',
+          'scrollbar-color': '#C8D0D4 transparent' /* Thumb color, bg color */,
+        },
+        '.fade-sides': {
+          'mask-image':
+            'linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 1) 95%, rgba(0, 0, 0, 0) 100%)',
+          '-webkit-mask-image':
+            'linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 1) 95%, rgba(0, 0, 0, 0) 100%)',
         },
       });
     }),

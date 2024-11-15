@@ -1,14 +1,21 @@
-import { useSyncExternalStore } from 'react';
+import { useEffect, useState } from 'react';
 
-const getIsMobile = () => window.matchMedia('(max-width: 640px)').matches;
+const useIsMobileScreen = () => {
+  const [isMobile, setIsMobile] = useState(false);
 
-const subscribeToMediaQuery = (callback: () => void) => {
-  const mediaQueryList = window.matchMedia('(max-width: 640px)');
-  mediaQueryList.addEventListener('change', callback);
-  return () => mediaQueryList.removeEventListener('change', callback);
+  useEffect(() => {
+    const mediaQueryList = window.matchMedia('(max-width: 640px)');
+    const updateIsMobile = () => setIsMobile(mediaQueryList.matches);
+
+    // Init
+    updateIsMobile();
+
+    mediaQueryList.addEventListener('change', updateIsMobile);
+
+    return () => mediaQueryList.removeEventListener('change', updateIsMobile);
+  }, []);
+
+  return isMobile;
 };
-
-const useIsMobileScreen = () =>
-  useSyncExternalStore(subscribeToMediaQuery, getIsMobile);
 
 export default useIsMobileScreen;

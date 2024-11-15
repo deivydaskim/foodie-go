@@ -67,10 +67,10 @@ const FoodFilterSlider = ({ foods }: FoodFilterSliderProps) => {
   }, []);
 
   return (
-    <section className="relative flex items-center">
+    <section className="relative mb-8 flex items-center">
       <div
         ref={sliderRef}
-        className="sm:scrollbar-hide scrollbar-thin fade-sides flex gap-6 overflow-x-auto scroll-smooth px-5"
+        className="sm:scrollbar-hide scrollbar-thin fade-sides mx-0 flex gap-5 overflow-x-auto scroll-smooth px-5 sm:mx-10"
         onScroll={handleScrolling}
       >
         {foods.map(food => (

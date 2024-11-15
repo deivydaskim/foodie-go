@@ -1,13 +1,13 @@
 import NavigationIcon from '@/assets/basic-icons/localization-icon.svg';
 import Image from 'next/image';
 import Link from 'next/link';
-import Button from './Button';
+import Button from '../ui/Button';
 import DeliverySwitch from './DeliverySwitch';
-import ShoppingCartButton from './ShoppingCartButton';
+import ShoppingCartButton from '../shopping-cart/ShoppingCartButton';
 
 const Header = () => {
   return (
-    <header className="flex flex-col justify-between gap-2 px-10 py-4 md:flex-row md:gap-4">
+    <header className="mb-8 mt-5 flex flex-col justify-between gap-2 px-10 md:flex-row md:gap-4">
       <div className="flex flex-1 items-center justify-between">
         <Link href="/">
           <Image

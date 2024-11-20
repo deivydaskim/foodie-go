@@ -21,7 +21,7 @@ const Button = ({
   return (
     <button
       onClick={onClick}
-      className={`h-9 text-nowrap rounded-full px-4 transition ${variantClasses} ${className}`}
+      className={`h-9 text-nowrap rounded-full px-4 transition button ${variantClasses} ${className}`}
     >
       {children}
     </button>

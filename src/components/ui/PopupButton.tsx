@@ -9,7 +9,7 @@ type PopupButtonProps = {
 
 const PopupButton = ({ children, button }: PopupButtonProps) => {
   return (
-    <Popover className="relative">
+    <Popover>
       <PopoverButton as="div" className="flex">
         {button}
       </PopoverButton>

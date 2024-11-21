@@ -12,7 +12,7 @@ const ArrowButton = ({
   onClick,
 }: ArrowButtonProps) => (
   <button
-    className={`absolute z-10 rounded-full bg-blueGray-100 p-1 ${
+    className={`absolute z-10 hidden rounded-full bg-blueGray-100 p-1 sm:block ${
       isVisible ? 'visible' : 'invisible'
     } ${isLeft ? 'left-0 rotate-180' : 'right-0'} transform`}
     onClick={onClick}

@@ -7,7 +7,7 @@ const ShoppingCartDetails = () => {
   };
 
   return (
-    <div className="mt-16 flex flex-col items-center gap-3 p-4 sm:mt-2">
+    <div className="mt-16 flex flex-col items-center gap-3 sm:mt-2 sm:p-4">
       <ShoppingCartIcon />
       <h3 className="body2">Your cart is empty</h3>
       <p className="text-center subtitle1">

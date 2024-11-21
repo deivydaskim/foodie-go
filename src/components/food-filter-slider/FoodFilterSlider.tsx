@@ -1,6 +1,5 @@
 'use client';
 
-import useIsMobileScreen from '@/hooks/useIsMobileScreen';
 import type { Food } from '@/lib/foodItems';
 import { useEffect, useRef, useState } from 'react';
 import ArrowButton from './ArrowButton';
@@ -20,8 +19,6 @@ const FoodFilterSlider = ({ foods }: FoodFilterSliderProps) => {
     right: true,
   });
   const [activeCard, setActiveCard] = useState<string | null>(null);
-
-  const isMobile = useIsMobileScreen();
 
   const SCROLL_AMOUNT = 170;
 
@@ -70,7 +67,7 @@ const FoodFilterSlider = ({ foods }: FoodFilterSliderProps) => {
     <section className="relative mb-8 flex items-center">
       <div
         ref={sliderRef}
-        className="sm:scrollbar-hide scrollbar-thin fade-sides mx-0 flex gap-5 overflow-x-auto scroll-smooth px-5 sm:mx-10"
+        className="mx-0 flex gap-5 overflow-x-auto scroll-smooth px-5 scrollbar-thin fade-sides sm:mx-10 sm:scrollbar-hide"
         onScroll={handleScrolling}
       >
         {foods.map(food => (
@@ -85,19 +82,17 @@ const FoodFilterSlider = ({ foods }: FoodFilterSliderProps) => {
           />
         ))}
       </div>
-      {!isMobile && (
-        <>
-          <ArrowButton
-            onClick={() => scrollSliderTo('left')}
-            isLeft
-            isVisible={isArrowVisible.left}
-          />
-          <ArrowButton
-            onClick={() => scrollSliderTo('right')}
-            isVisible={isArrowVisible.right}
-          />
-        </>
-      )}
+      <>
+        <ArrowButton
+          onClick={() => scrollSliderTo('left')}
+          isLeft
+          isVisible={isArrowVisible.left}
+        />
+        <ArrowButton
+          onClick={() => scrollSliderTo('right')}
+          isVisible={isArrowVisible.right}
+        />
+      </>
     </section>
   );
 };

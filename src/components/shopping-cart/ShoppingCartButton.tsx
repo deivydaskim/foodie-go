@@ -11,19 +11,19 @@ import ShoppingCartDetails from './ShoppingCartDetails';
 const ShoppingCartButton = () => {
   const isMobile = useIsMobileScreen();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [cartItems, setCartItems] = useState(0);
+  const cartItems = useState(0)[0];
 
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
 
   const cartButton = (
     <Button
-      variant="secondary"
+      variant="rounded"
       className="relative"
       onClick={isMobile ? openDrawer : undefined}
     >
       <ShoppingCartIcon />
-      <span className="absolute right-2 top-0 h-4 w-4 rounded-full bg-green text-xs">
+      <span className="absolute right-0 top-0 h-4 w-4 rounded-full bg-green text-xs">
         {cartItems}
       </span>
     </Button>

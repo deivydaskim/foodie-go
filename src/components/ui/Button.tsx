@@ -14,7 +14,7 @@ const Button = ({
   const variants = {
     primary: 'bg-green text-white hover:bg-darkGreen',
     secondary: 'text-black hover:bg-blueGray-100',
-    rounded: 'hover:bg-blueGray-100 flex w-9 items-center justify-center px-0',
+    rounded: 'hover:bg-blueGray-100 flex w-9 items-center justify-center !px-0',
   };
 
   const variantClasses = variants[variant] || '';

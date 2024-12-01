@@ -3,12 +3,18 @@ import MobileFilterMenu from '@/components/restaurants-filter/MobileFilterMenu';
 import RestaurantsFilters from '@/components/restaurants-filter/RestaurantsFilters';
 import RestaurantsSearch from '@/components/restaurants-filter/RestaurantsSearch';
 import RestaurantsSortBy from '@/components/restaurants-filter/RestaurantsSortBy';
-import { foodList } from '@/lib/foodItems';
+import RestaurantsList from '@/components/restaurants/RestaurantsList';
+import { foodCategories } from '@/lib/foodCategories';
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch('http://localhost:3000/api/restaurants', {
+    cache: 'force-cache',
+  });
+  const restaurants = await res.json();
+
   return (
     <div className="m-auto max-w-[1168px] px-3 md:px-10">
-      <FoodFilterSlider foods={foodList} />
+      <FoodFilterSlider categories={foodCategories} />
       <div className="grid min-h-screen grid-cols-1 gap-1 rounded-xl bg-gray-100 px-2 py-3 sm:grid-cols-[1fr_3fr] md:px-4 md:py-5">
         <aside className="hidden min-w-44 sm:block md:px-3 lg:px-6">
           <RestaurantsFilters />
@@ -25,7 +31,9 @@ export default function Home() {
               <MobileFilterMenu />
             </div>
           </section>
-          <main className="bg-white">Restaurants list</main>
+          <main>
+            <RestaurantsList data={restaurants} />
+          </main>
         </div>
       </div>
     </div>

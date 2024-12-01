@@ -1,15 +1,15 @@
 'use client';
 
-import type { Food } from '@/lib/foodItems';
+import type { Category } from '@/lib/foodCategories';
 import { useEffect, useRef, useState } from 'react';
 import ArrowButton from './ArrowButton';
 import FoodCard from './FoodCard';
 
 type FoodFilterSliderProps = {
-  foods: Food[];
+  categories: Category[];
 };
 
-const FoodFilterSlider = ({ foods }: FoodFilterSliderProps) => {
+const FoodFilterSlider = ({ categories }: FoodFilterSliderProps) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const scrollPositionRef = useRef(0);
   const maxScrollRef = useRef(0);
@@ -70,14 +70,16 @@ const FoodFilterSlider = ({ foods }: FoodFilterSliderProps) => {
         className="mx-0 flex gap-5 overflow-x-auto scroll-smooth px-5 scrollbar-thin fade-sides sm:mx-10 sm:scrollbar-hide"
         onScroll={handleScrolling}
       >
-        {foods.map(food => (
+        {categories.map(category => (
           <FoodCard
-            key={food.title}
-            icon={food.icon}
-            title={food.title}
-            isActive={activeCard === food.title}
+            key={category.title}
+            icon={category.icon}
+            title={category.title}
+            isActive={activeCard === category.title}
             onClick={() => {
-              setActiveCard(prev => (prev === food.title ? null : food.title));
+              setActiveCard(prev =>
+                prev === category.title ? null : category.title,
+              );
             }}
           />
         ))}

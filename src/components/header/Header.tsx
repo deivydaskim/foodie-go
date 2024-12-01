@@ -1,21 +1,16 @@
 import NavigationIcon from '@/assets/basic-icons/localization-icon.svg';
-import Image from 'next/image';
+import Logo from '@/assets/basic-icons/Logo.svg';
 import Link from 'next/link';
+import ShoppingCartButton from '../shopping-cart/ShoppingCartButton';
 import Button from '../ui/Button';
 import DeliverySwitch from './DeliverySwitch';
-import ShoppingCartButton from '../shopping-cart/ShoppingCartButton';
 
 const Header = () => {
   return (
     <header className="mb-8 mt-5 flex flex-col justify-between gap-2 px-10 md:flex-row md:gap-4">
       <div className="flex flex-1 items-center justify-between">
         <Link href="/">
-          <Image
-            src="/basic-icons/Logo.svg"
-            alt="logo"
-            width={100}
-            height={16}
-          />
+          <Logo />
         </Link>
         <DeliverySwitch />
       </div>

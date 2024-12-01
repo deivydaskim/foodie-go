@@ -19,4 +19,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #f5f7f8, #cfd8dc);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }

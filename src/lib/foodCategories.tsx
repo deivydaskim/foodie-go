@@ -13,12 +13,12 @@ import SeaFood from '@/assets/food-icons/seafood-icon.svg';
 import Sushi from '@/assets/food-icons/sushi-icon.svg';
 import Vegan from '@/assets/food-icons/vegan-icon.svg';
 
-type Food = {
+export type Category = {
   title: string;
   icon: JSX.Element;
 };
 
-export const foodList: Food[] = [
+export const foodCategories: Category[] = [
   { title: 'Breakfast', icon: <Breakfast /> },
   { title: 'Pizza', icon: <Pizza /> },
   { title: 'Sushi', icon: <Sushi /> },
@@ -34,5 +34,3 @@ export const foodList: Food[] = [
   { title: 'Sea Food', icon: <SeaFood /> },
   { title: 'Ice Cream', icon: <IceCream /> },
 ];
-
-export type { Food };

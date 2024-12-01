@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} min-h-screen bg-gradient-bg`}>
+      <body className={`${poppins.variable} min-h-screen`}>
         <Header />
         {children}
       </body>

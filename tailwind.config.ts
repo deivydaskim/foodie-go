@@ -9,9 +9,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-bg': 'linear-gradient(to bottom, #F5F7F8, #CFD8DC)',
-      },
       colors: {
         gray: {
           100: '#F8F8F8',

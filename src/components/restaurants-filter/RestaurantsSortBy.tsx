@@ -1,5 +1,6 @@
 'use client';
 
+import { useRestaurantsStore } from '@/app/restaurantsStore';
 import ArrowDownIcon from '@/assets/basic-icons/arrow-down-icon.svg';
 import Button from '@/components/ui/Button';
 import PopupButton from '@/components/ui/PopupButton';
@@ -15,9 +16,8 @@ const sortOptions = [
 ];
 
 const RestaurantsSortBy = () => {
-  const [selectedSort, setSelectedSort] = useState<string>(sortOptions[0]);
-
-  const [tempSort, setTempSort] = useState<string>(selectedSort);
+  const { sortOption, setSortOption } = useRestaurantsStore();
+  const [tempSort, setTempSort] = useState<string>(sortOption); // Initially set to the store value
 
   const isMobile = useIsMobileScreen();
 
@@ -26,7 +26,7 @@ const RestaurantsSortBy = () => {
       variant="secondary"
       className="flex w-full items-center justify-between bg-blueGray-100 subtitle1"
     >
-      {selectedSort}
+      {sortOption}
       <ArrowDownIcon className="transition-transform group-data-[open]:-rotate-180" />
     </Button>
   );
@@ -52,14 +52,20 @@ const RestaurantsSortBy = () => {
         <div className="flex justify-end gap-2">
           <CloseButton as="div">
             <Button
-              onClick={() => setTempSort(selectedSort)}
+              onClick={() => setTempSort(sortOption)} // Reset to current sortOption from store
               variant="secondary"
             >
               Cancel
             </Button>
           </CloseButton>
           <CloseButton as="div">
-            <Button onClick={() => setSelectedSort(tempSort)}>Apply</Button>
+            <Button
+              onClick={() => {
+                setSortOption(tempSort);
+              }}
+            >
+              Apply
+            </Button>
           </CloseButton>
         </div>
       </div>

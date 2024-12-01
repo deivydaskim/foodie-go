@@ -32,7 +32,7 @@ export default async function Home() {
             </div>
           </section>
           <main>
-            <RestaurantsList data={restaurants} />
+            <RestaurantsList initialData={restaurants} />
           </main>
         </div>
       </div>

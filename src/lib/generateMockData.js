@@ -97,7 +97,7 @@ const generateMockData = () => {
 
   if (!fs.existsSync(MOCK_DATA_FILE)) {
     console.log('Generating mock data...');
-    const mockData = generateRestaurants(100);
+    const mockData = generateRestaurants(50);
     try {
       fs.writeFileSync(MOCK_DATA_FILE, JSON.stringify(mockData, null, 2));
       console.log('Mock data created successfully');

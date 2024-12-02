@@ -1,3 +1,5 @@
+'use client';
+
 import FoodFilterSlider from '@/components/food-filter-slider/FoodFilterSlider';
 import MobileFilterMenu from '@/components/restaurants-filter/MobileFilterMenu';
 import RestaurantsFilters from '@/components/restaurants-filter/RestaurantsFilters';
@@ -5,12 +7,10 @@ import RestaurantsSearch from '@/components/restaurants-filter/RestaurantsSearch
 import RestaurantsSortBy from '@/components/restaurants-filter/RestaurantsSortBy';
 import RestaurantsList from '@/components/restaurants/RestaurantsList';
 import { foodCategories } from '@/lib/foodCategories';
+import { useRestaurantsStore } from '@/providers/restaurants-store-provider';
 
-export default async function Home() {
-  const res = await fetch('http://localhost:3000/api/restaurants', {
-    cache: 'force-cache',
-  });
-  const restaurants = await res.json();
+const HomePage = () => {
+  const { restaurants } = useRestaurantsStore(state => state);
 
   return (
     <div className="m-auto max-w-[1168px] px-3 md:px-10">
@@ -33,9 +33,21 @@ export default async function Home() {
           </section>
           <main>
             <RestaurantsList initialData={restaurants} />
+            {/* <div>
+              Count: {count}
+              <hr />
+              <button type="button" onClick={() => void incrementCount()}>
+                Increment Count
+              </button>
+              <button type="button" onClick={() => void decrementCount()}>
+                Decrement Count
+              </button>
+            </div> */}
           </main>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default HomePage;

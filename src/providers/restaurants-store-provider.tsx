@@ -1,6 +1,6 @@
 'use client';
 
-import type { RestaurantsState } from '@/stores/restaurants-store';
+import type { Restaurant } from '@/components/restaurants/RestaurantInfo';
 import {
   type RestaurantsStore,
   createRestaurantsStore,
@@ -16,16 +16,17 @@ export const RestaurantsStoreContext = createContext<
 
 export interface RestaurantsStoreProviderProps {
   children: ReactNode;
-  initData: RestaurantsState; // Accept initData prop
+  initData: Restaurant[];
 }
 
 export const RestaurantsStoreProvider = ({
   children,
-  initData = { restaurants: [] }, // Default to an empty list if no initData is provided
+  initData,
 }: RestaurantsStoreProviderProps) => {
   const storeRef = useRef<RestaurantsStoreApi>();
+
   if (!storeRef.current) {
-    storeRef.current = createRestaurantsStore(initData); // Initialize the store with
+    storeRef.current = createRestaurantsStore(initData); // Initialize the store with list of restaurants
   }
 
   return (
@@ -41,7 +42,9 @@ export const useRestaurantsStore = <T,>(
   const counterStoreContext = useContext(RestaurantsStoreContext);
 
   if (!counterStoreContext) {
-    throw new Error(`useCounterStore must be used within CounterStoreProvider`);
+    throw new Error(
+      `useRestaurantsStore must be used within RestaurantsStoreProvider`,
+    );
   }
 
   return useStore(counterStoreContext, selector);

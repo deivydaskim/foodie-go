@@ -1,14 +1,14 @@
 'use client';
 
-import { useRestaurantsStore } from '@/app/restaurantsStore';
 import SearchIcon from '@/assets/basic-icons/search-icon.svg';
+import { useRestaurantsStore } from '@/providers/restaurants-store-provider';
 
 const RestaurantsSearch = () => {
-  const searchQuery = useRestaurantsStore(state => state.searchQuery);
-  const setSearchQuery = useRestaurantsStore(state => state.setSearchQuery);
+  const { searchQuery } = useRestaurantsStore(state => state.filterOptions);
+  const { setFilterOption } = useRestaurantsStore(state => state);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
+    setFilterOption('searchQuery', event.target.value);
   };
 
   return (

@@ -31,7 +31,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} min-h-screen`}>
         <Header />
-        <RestaurantsStoreProvider initData={{ restaurants: restaurantsData }}>
+        <RestaurantsStoreProvider initData={restaurantsData}>
           {children}
         </RestaurantsStoreProvider>
       </body>

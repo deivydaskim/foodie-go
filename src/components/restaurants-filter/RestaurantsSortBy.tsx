@@ -1,24 +1,18 @@
 'use client';
 
-import { useRestaurantsStore } from '@/app/restaurantsStore';
 import ArrowDownIcon from '@/assets/basic-icons/arrow-down-icon.svg';
 import Button from '@/components/ui/Button';
 import PopupButton from '@/components/ui/PopupButton';
 import useIsMobileScreen from '@/hooks/useIsMobileScreen';
+import { useRestaurantsStore } from '@/providers/restaurants-store-provider';
+import type { SortOption } from '@/stores/restaurants-store';
+import { SORT_OPTIONS } from '@/stores/restaurants-store';
 import { CloseButton, Label, Radio, RadioGroup } from '@headlessui/react';
 import { useState } from 'react';
 
-const sortOptions = [
-  'Recommended',
-  'Alphabet order (A-Z)',
-  'Alphabet order (Z-A)',
-  'Distance',
-];
-
 const RestaurantsSortBy = () => {
-  const { sortOption, setSortOption } = useRestaurantsStore();
-  const [tempSort, setTempSort] = useState<string>(sortOption); // Initially set to the store value
-
+  const { sortOption, setSortOption } = useRestaurantsStore(state => state);
+  const [tempSort, setTempSort] = useState<SortOption>(sortOption); // Initially set to the store value
   const isMobile = useIsMobileScreen();
 
   const sortButton = (
@@ -38,7 +32,7 @@ const RestaurantsSortBy = () => {
       <div className="flex flex-col gap-3 p-6">
         <h4 className="header4">Sort by</h4>
         <RadioGroup value={tempSort} onChange={setTempSort}>
-          {sortOptions.map(option => (
+          {SORT_OPTIONS.map(option => (
             <Radio
               key={option}
               value={option}

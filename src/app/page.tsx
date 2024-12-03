@@ -1,5 +1,3 @@
-'use client';
-
 import FoodFilterSlider from '@/components/food-filter-slider/FoodFilterSlider';
 import MobileFilterMenu from '@/components/restaurants-filter/MobileFilterMenu';
 import RestaurantsFilters from '@/components/restaurants-filter/RestaurantsFilters';
@@ -7,11 +5,12 @@ import RestaurantsSearch from '@/components/restaurants-filter/RestaurantsSearch
 import RestaurantsSortBy from '@/components/restaurants-filter/RestaurantsSortBy';
 import RestaurantsList from '@/components/restaurants/RestaurantsList';
 import { foodCategories } from '@/lib/foodCategories';
-import { useRestaurantsStore } from '@/providers/restaurants-store-provider';
 
-const HomePage = () => {
-
-  const  filteredRestaurants  = useRestaurantsStore(state => state.filteredRestaurants);
+const HomePage = async () => {
+  const res = await fetch('http://localhost:3000/api/restaurants', {
+    cache: 'force-cache',
+  });
+  const restaurantsData = await res.json();
 
   return (
     <div className="m-auto max-w-[1168px] px-3 md:px-10">
@@ -33,7 +32,7 @@ const HomePage = () => {
             </div>
           </section>
           <main>
-            <RestaurantsList initialData={filteredRestaurants} />
+            <RestaurantsList restaurants={restaurantsData} />
           </main>
         </div>
       </div>

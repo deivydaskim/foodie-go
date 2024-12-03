@@ -3,34 +3,36 @@
 import StarFilled from '@/assets/basic-icons/star-filled-icon.svg';
 import StarOutline from '@/assets/basic-icons/star-outline.svg';
 import ToggleSwitch from '@/components/ui/ToggleSwitch';
-import { useRestaurantsStore } from '@/providers/restaurants-store-provider';
+import { updateQueryParam } from '@/lib/utils';
 import { Field, Label, Radio, RadioGroup } from '@headlessui/react';
+import { useSearchParams } from 'next/navigation';
+
+const STAR_RATINGS = [1, 2, 3, 4, 5];
 
 const RestaurantsFilters = () => {
-  const { setFilterOption } = useRestaurantsStore(state => state);
-  const { rating, openNow, freeDelivery } = useRestaurantsStore(
-    state => state.filterOptions,
-  );
+  const searchParams = useSearchParams();
 
-  const STAR_RATINGS = [1, 2, 3, 4, 5];
+  const openNow = searchParams.get('openNow') === 'true';
+  const freeDelivery = searchParams.get('freeDelivery') === 'true';
+  const rating = Number(searchParams.get('rating'));
 
   return (
     <div className="space-y-5">
       <ToggleSwitch
         label="Open now"
         checked={openNow}
-        onChange={checked => setFilterOption('openNow', checked)}
+        onChange={checked => updateQueryParam('openNow', checked)}
       />
       <ToggleSwitch
         label="Free delivery"
         checked={freeDelivery}
-        onChange={checked => setFilterOption('freeDelivery', checked)}
+        onChange={checked => updateQueryParam('freeDelivery', checked)}
       />
       <Field className="flex flex-col gap-2">
         <Label className="select-none body1">Rating</Label>
         <RadioGroup
           value={rating}
-          onChange={value => setFilterOption('rating', value)}
+          onChange={value => updateQueryParam('rating', value)}
           className="flex"
         >
           {STAR_RATINGS.map(star => (

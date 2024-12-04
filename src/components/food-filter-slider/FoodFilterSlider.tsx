@@ -1,15 +1,16 @@
 'use client';
 
-import type { Category } from '@/lib/foodCategories';
+import { foodCategories } from '@/components/food-filter-slider/foodCategories';
+import { updateQueryParam } from '@/lib/utils';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import ArrowButton from './ArrowButton';
 import FoodCard from './FoodCard';
 
-type FoodFilterSliderProps = {
-  categories: Category[];
-};
+const FoodFilterSlider = () => {
+  const searchParams = useSearchParams();
+  const activeCategory = searchParams.get('category');
 
-const FoodFilterSlider = ({ categories }: FoodFilterSliderProps) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const scrollPositionRef = useRef(0);
   const maxScrollRef = useRef(0);
@@ -18,7 +19,6 @@ const FoodFilterSlider = ({ categories }: FoodFilterSliderProps) => {
     left: false,
     right: true,
   });
-  const [activeCard, setActiveCard] = useState<string | null>(null);
 
   const SCROLL_AMOUNT = 170;
 
@@ -43,7 +43,6 @@ const FoodFilterSlider = ({ categories }: FoodFilterSliderProps) => {
       const leftVisible = position > 0;
       const rightVisible = position < maxScrollRef.current;
 
-      // Update state only if the visibility conditions have changed
       if (
         leftVisible !== isArrowVisible.left ||
         rightVisible !== isArrowVisible.right
@@ -63,6 +62,14 @@ const FoodFilterSlider = ({ categories }: FoodFilterSliderProps) => {
     }
   }, []);
 
+  const handleCategoryChange = (category: string) => {
+    if (activeCategory === category) {
+      updateQueryParam('category', '');
+    } else {
+      updateQueryParam('category', category);
+    }
+  };
+
   return (
     <section className="relative mb-8 flex items-center">
       <div
@@ -70,17 +77,13 @@ const FoodFilterSlider = ({ categories }: FoodFilterSliderProps) => {
         className="mx-0 flex gap-5 overflow-x-auto scroll-smooth px-5 scrollbar-thin fade-sides sm:mx-10 sm:scrollbar-hide"
         onScroll={handleScrolling}
       >
-        {categories.map(category => (
+        {foodCategories.map(category => (
           <FoodCard
             key={category.title}
             icon={category.icon}
             title={category.title}
-            isActive={activeCard === category.title}
-            onClick={() => {
-              setActiveCard(prev =>
-                prev === category.title ? null : category.title,
-              );
-            }}
+            isActive={activeCategory === category.title}
+            onClick={() => handleCategoryChange(category.title)}
           />
         ))}
       </div>

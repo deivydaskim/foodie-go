@@ -1,63 +1,68 @@
 'use client';
 
 import {
+  filterByCategory,
   filterRestaurants,
   searchRestaurants,
   sortRestaurants,
 } from '@/lib/utils';
 import { useSearchParams } from 'next/navigation';
 import { useDeferredValue } from 'react';
-import type { Restaurant } from './RestaurantInfo';
+import type { FoodCategories, Restaurant } from './RestaurantInfo';
 import RestaurantInfo from './RestaurantInfo';
 
-const RestaurantsList = ({ restaurants }: { restaurants: Restaurant[] }) => {
+type RestaurantsListProps = {
+  restaurants: Restaurant[];
+};
+
+const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
   const searchParams = useSearchParams();
 
   const params = {
-    searchQuery: searchParams.get('search') || '',
+    searchQuery: searchParams.get('search'),
     openNow: searchParams.get('openNow') === 'true',
     freeDelivery: searchParams.get('freeDelivery') === 'true',
-    rating: Number(searchParams.get('rating')) || 0,
-    sortOption: searchParams.get('sort') || '',
+    rating: Number(searchParams.get('rating')),
+    sortOption: searchParams.get('sort'),
+    category: searchParams.get('category'),
   };
 
-  const deferredParams = useDeferredValue(params);
-
-  const isPending =
-    params.searchQuery !== deferredParams.searchQuery ||
-    params.openNow !== deferredParams.openNow ||
-    params.freeDelivery !== deferredParams.freeDelivery ||
-    params.rating !== deferredParams.rating ||
-    params.sortOption !== deferredParams.sortOption;
+  const { freeDelivery, openNow, rating, searchQuery, sortOption, category } =
+    useDeferredValue(params);
 
   let processedRestaurants = restaurants;
 
-  if (deferredParams.searchQuery) {
-    processedRestaurants = searchRestaurants(
+  if (searchQuery) {
+    processedRestaurants = searchRestaurants(processedRestaurants, searchQuery);
+  }
+
+  if (category) {
+    processedRestaurants = filterByCategory(
       processedRestaurants,
-      deferredParams.searchQuery,
+      category as FoodCategories,
     );
   }
 
-  if (
-    deferredParams.openNow ||
-    deferredParams.freeDelivery ||
-    deferredParams.rating > 0
-  ) {
+  if (openNow || freeDelivery || rating > 0) {
     processedRestaurants = filterRestaurants(
       processedRestaurants,
-      deferredParams.openNow,
-      deferredParams.freeDelivery,
-      deferredParams.rating,
+      openNow,
+      freeDelivery,
+      rating,
     );
   }
 
-  if (deferredParams.sortOption) {
-    processedRestaurants = sortRestaurants(
-      processedRestaurants,
-      deferredParams.sortOption,
-    );
+  if (sortOption) {
+    processedRestaurants = sortRestaurants(processedRestaurants, sortOption);
   }
+
+  const isPending =
+    params.searchQuery !== searchQuery ||
+    params.openNow !== openNow ||
+    params.freeDelivery !== freeDelivery ||
+    params.rating !== rating ||
+    params.sortOption !== sortOption ||
+    params.category !== category;
 
   return (
     <div

@@ -19,7 +19,7 @@ type Menu = {
   chefsPicks: Dish[];
 };
 
-type FoodCategories =
+export type FoodCategories =
   | 'Asian'
   | 'Breakfast'
   | 'Burger'

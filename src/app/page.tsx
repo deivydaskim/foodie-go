@@ -4,7 +4,6 @@ import RestaurantsFilters from '@/components/restaurants-filter/RestaurantsFilte
 import RestaurantsSearch from '@/components/restaurants-filter/RestaurantsSearch';
 import RestaurantsSortBy from '@/components/restaurants-filter/RestaurantsSortBy';
 import RestaurantsList from '@/components/restaurants/RestaurantsList';
-import { foodCategories } from '@/lib/foodCategories';
 
 // Dynamic rendering instead of Static because data of URL Search params can only be known at request time for components;
 // Also posible to wrap in Suspense, by making it CSR instead of SSR, but lossing SEO;
@@ -18,7 +17,7 @@ const HomePage = async () => {
 
   return (
     <div className="m-auto max-w-[1168px] px-3 md:px-10">
-      <FoodFilterSlider categories={foodCategories} />
+      <FoodFilterSlider />
       <div className="grid min-h-screen grid-cols-1 gap-1 rounded-xl bg-gray-100 px-2 py-3 sm:grid-cols-[1fr_3fr] md:px-4 md:py-5">
         <aside className="hidden min-w-44 sm:block md:px-3 lg:px-6">
           <RestaurantsFilters />

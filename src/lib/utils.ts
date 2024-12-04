@@ -1,4 +1,7 @@
-import { Restaurant } from '@/components/restaurants/RestaurantInfo';
+import type {
+  FoodCategories,
+  Restaurant,
+} from '@/components/restaurants/RestaurantInfo';
 
 export const calculateDeliveryTime = (distance: number) => {
   const BASE_TIME = 10;
@@ -34,6 +37,15 @@ export const searchRestaurants = (
 
   return restaurants.filter(restaurant =>
     restaurant.name.toLowerCase().includes(lowercasedQuery),
+  );
+};
+
+export const filterByCategory = (
+  restaurants: Restaurant[],
+  category: FoodCategories,
+) => {
+  return restaurants.filter(restaurant =>
+    restaurant.categories.includes(category),
   );
 };
 

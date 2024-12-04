@@ -6,6 +6,10 @@ import RestaurantsSortBy from '@/components/restaurants-filter/RestaurantsSortBy
 import RestaurantsList from '@/components/restaurants/RestaurantsList';
 import { foodCategories } from '@/lib/foodCategories';
 
+// Dynamic rendering instead of Static because data of URL Search params can only be known at request time for components;
+// Also posible to wrap in Suspense, by making it CSR instead of SSR, but lossing SEO;
+export const dynamic = 'force-dynamic';
+
 const HomePage = async () => {
   const res = await fetch('http://localhost:3000/api/restaurants', {
     cache: 'force-cache',

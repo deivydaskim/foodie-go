@@ -6,38 +6,65 @@ import {
   sortRestaurants,
 } from '@/lib/utils';
 import { useSearchParams } from 'next/navigation';
-import RestaurantInfo, { Restaurant } from './RestaurantInfo';
+import { useDeferredValue } from 'react';
+import type { Restaurant } from './RestaurantInfo';
+import RestaurantInfo from './RestaurantInfo';
 
 const RestaurantsList = ({ restaurants }: { restaurants: Restaurant[] }) => {
   const searchParams = useSearchParams();
 
-  const searchQuery = searchParams.get('search');
-  const openNow = searchParams.get('openNow') === 'true';
-  const freeDelivery = searchParams.get('freeDelivery') === 'true';
-  const rating = Number(searchParams.get('rating'));
-  const sortOption = searchParams.get('sort');
+  const params = {
+    searchQuery: searchParams.get('search') || '',
+    openNow: searchParams.get('openNow') === 'true',
+    freeDelivery: searchParams.get('freeDelivery') === 'true',
+    rating: Number(searchParams.get('rating')) || 0,
+    sortOption: searchParams.get('sort') || '',
+  };
+
+  const deferredParams = useDeferredValue(params);
+
+  const isPending =
+    params.searchQuery !== deferredParams.searchQuery ||
+    params.openNow !== deferredParams.openNow ||
+    params.freeDelivery !== deferredParams.freeDelivery ||
+    params.rating !== deferredParams.rating ||
+    params.sortOption !== deferredParams.sortOption;
 
   let processedRestaurants = restaurants;
 
-  if (searchQuery) {
-    processedRestaurants = searchRestaurants(processedRestaurants, searchQuery);
-  }
-
-  if (openNow || freeDelivery || rating > 0) {
-    processedRestaurants = filterRestaurants(
+  if (deferredParams.searchQuery) {
+    processedRestaurants = searchRestaurants(
       processedRestaurants,
-      openNow,
-      freeDelivery,
-      rating,
+      deferredParams.searchQuery,
     );
   }
 
-  if (sortOption) {
-    processedRestaurants = sortRestaurants(processedRestaurants, sortOption);
+  if (
+    deferredParams.openNow ||
+    deferredParams.freeDelivery ||
+    deferredParams.rating > 0
+  ) {
+    processedRestaurants = filterRestaurants(
+      processedRestaurants,
+      deferredParams.openNow,
+      deferredParams.freeDelivery,
+      deferredParams.rating,
+    );
+  }
+
+  if (deferredParams.sortOption) {
+    processedRestaurants = sortRestaurants(
+      processedRestaurants,
+      deferredParams.sortOption,
+    );
   }
 
   return (
-    <div className="flex flex-col gap-4 pt-4">
+    <div
+      className={`relative flex flex-col gap-4 pt-4 transition-opacity duration-300 ${
+        isPending ? 'opacity-50' : 'opacity-100'
+      }`}
+    >
       <h2>Order from {processedRestaurants.length} places</h2>
       {processedRestaurants.map(restaurant => (
         <RestaurantInfo key={restaurant.id} restaurant={restaurant} />

@@ -2,7 +2,6 @@
 
 import SearchIcon from '@/assets/basic-icons/search-icon.svg';
 import { updateQueryParam } from '@/lib/utils';
-import debounce from 'lodash.debounce';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
@@ -13,14 +12,10 @@ const RestaurantsSearch = () => {
     searchParams.get('search') || '',
   );
 
-  const debouncedUpdateQuery = debounce((value: string) => {
-    updateQueryParam('search', value);
-  }, 200);
-
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchValue = e.target.value;
     setSearchInput(newSearchValue);
-    debouncedUpdateQuery(newSearchValue);
+    updateQueryParam('search', newSearchValue);
   };
 
   return (

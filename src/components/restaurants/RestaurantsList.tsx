@@ -8,6 +8,7 @@ import {
 } from '@/lib/utils';
 import { useSearchParams } from 'next/navigation';
 import { useDeferredValue } from 'react';
+import EmptyList from './EmptyList';
 import type { FoodCategories, Restaurant } from './RestaurantInfo';
 import RestaurantInfo from './RestaurantInfo';
 
@@ -66,14 +67,20 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
 
   return (
     <div
-      className={`relative flex flex-col gap-4 pt-4 transition-opacity duration-300 ${
-        isPending ? 'opacity-50' : 'opacity-100'
+      className={`relative flex flex-col gap-4 pt-4 transition-opacity ${
+        isPending ? 'opacity-50' : ''
       }`}
     >
-      <h2>Order from {processedRestaurants.length} places</h2>
-      {processedRestaurants.map(restaurant => (
-        <RestaurantInfo key={restaurant.id} restaurant={restaurant} />
-      ))}
+      {processedRestaurants.length === 0 ? (
+        <EmptyList />
+      ) : (
+        <>
+          <h2>Order from {processedRestaurants.length} places</h2>
+          {processedRestaurants.map(restaurant => (
+            <RestaurantInfo key={restaurant.id} restaurant={restaurant} />
+          ))}
+        </>
+      )}
     </div>
   );
 };

@@ -3,18 +3,14 @@
 import SearchIcon from '@/assets/basic-icons/search-icon.svg';
 import { updateQueryParam } from '@/lib/utils';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
 
 const RestaurantsSearch = () => {
   const searchParams = useSearchParams();
 
-  const [searchInput, setSearchInput] = useState<string>(
-    searchParams.get('search') || '',
-  );
+  const searchInput = searchParams.get('search') || '';
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchValue = e.target.value;
-    setSearchInput(newSearchValue);
     updateQueryParam('search', newSearchValue);
   };
 

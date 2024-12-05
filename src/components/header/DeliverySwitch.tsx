@@ -2,18 +2,17 @@
 
 import DeliveryIcon from '@/assets/basic-icons/delivery-icon.svg';
 import PickupIcon from '@/assets/basic-icons/pickup-icon.svg';
+import { usePickupDelivery } from '@/context/PickupDeliveryContext';
 import { Switch } from '@headlessui/react';
-import { useState } from 'react';
 import SwitchLabel from './SwitchLabel';
 
 const DeliverySwitch = () => {
-  const [isPickup, setIsPickup] = useState(false);
+  const { isPickup, togglePickupDelivery } = usePickupDelivery();
 
-  const toggleMode = () => setIsPickup(state => !state);
   return (
     <Switch
       checked={isPickup}
-      onChange={toggleMode}
+      onChange={togglePickupDelivery}
       className="relative inline-flex h-9 w-48 items-center justify-between rounded-full bg-blueGray-100 px-1 button"
       aria-label={isPickup ? 'Switch to Delivery' : 'Switch to Pickup'}
     >

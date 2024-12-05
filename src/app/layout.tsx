@@ -4,6 +4,8 @@ import { Poppins } from 'next/font/google';
 import Header from '@/components/header/Header';
 import './globals.css';
 
+import { PickupDeliveryProvider } from '@/context/PickupDeliveryContext';
+
 const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
@@ -24,8 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable}`}>
-        <Header />
-        {children}
+        <PickupDeliveryProvider>
+          <Header />
+          {children}
+        </PickupDeliveryProvider>
       </body>
     </html>
   );

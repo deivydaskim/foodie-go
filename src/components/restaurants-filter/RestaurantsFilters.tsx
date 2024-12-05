@@ -3,18 +3,28 @@
 import StarFilled from '@/assets/basic-icons/star-filled-icon.svg';
 import StarOutline from '@/assets/basic-icons/star-outline.svg';
 import ToggleSwitch from '@/components/ui/ToggleSwitch';
+import { usePickupDelivery } from '@/context/PickupDeliveryContext';
 import { updateQueryParam } from '@/lib/utils';
 import { Field, Label, Radio, RadioGroup } from '@headlessui/react';
 import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 const STAR_RATINGS = [1, 2, 3, 4, 5];
 
 const RestaurantsFilters = () => {
   const searchParams = useSearchParams();
+  const { isPickup } = usePickupDelivery();
 
   const openNow = searchParams.get('openNow') === 'true';
   const freeDelivery = searchParams.get('freeDelivery') === 'true';
   const rating = Number(searchParams.get('rating'));
+
+  // Remove 'freeDelivery' from URL if Pickup is selected;
+  useEffect(() => {
+    if (isPickup && freeDelivery) {
+      updateQueryParam('freeDelivery', '');
+    }
+  }, [isPickup, freeDelivery]);
 
   return (
     <div className="space-y-5">
@@ -23,11 +33,13 @@ const RestaurantsFilters = () => {
         checked={openNow}
         onChange={checked => updateQueryParam('openNow', checked)}
       />
-      <ToggleSwitch
-        label="Free delivery"
-        checked={freeDelivery}
-        onChange={checked => updateQueryParam('freeDelivery', checked)}
-      />
+      {!isPickup && (
+        <ToggleSwitch
+          label="Free delivery"
+          checked={freeDelivery}
+          onChange={checked => updateQueryParam('freeDelivery', checked)}
+        />
+      )}
       <Field className="flex flex-col gap-2">
         <Label className="select-none body1">Rating</Label>
         <RadioGroup

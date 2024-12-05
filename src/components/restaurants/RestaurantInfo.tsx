@@ -1,6 +1,11 @@
+'use client';
+
+import LocationIcon from '@/assets/basic-icons/adress.svg';
 import DeliveryIcon from '@/assets/basic-icons/delivery-icon.svg';
+import DistanceIcon from '@/assets/basic-icons/distance-icon.svg';
 import StarIcon from '@/assets/basic-icons/star-filled-icon.svg';
 import TimeIcon from '@/assets/basic-icons/time.svg';
+import { usePickupDelivery } from '@/context/PickupDeliveryContext';
 import { calculateDeliveryTime } from '@/lib/utils';
 import InfoItem from './InfoItem';
 
@@ -59,6 +64,8 @@ const RestaurantInfo = ({ restaurant }: RestaurantInfoProps) => {
     restaurant.distance,
   );
 
+  const { isPickup } = usePickupDelivery();
+
   return (
     <article
       key={restaurant.id}
@@ -79,17 +86,27 @@ const RestaurantInfo = ({ restaurant }: RestaurantInfoProps) => {
             {`${restaurant.rating} (${restaurant.numberOfReviews}+)`}
           </InfoItem>
           <span>•</span>
-          <InfoItem icon={<TimeIcon />}>
-            {`${deliveryTime}-${delayedDeliveryTime} min`}
-          </InfoItem>
+          {isPickup ? (
+            <InfoItem icon={<DistanceIcon />}>
+              {`${restaurant.distance} km`}
+            </InfoItem>
+          ) : (
+            <InfoItem icon={<TimeIcon />}>
+              {`${deliveryTime}-${delayedDeliveryTime} min`}
+            </InfoItem>
+          )}
           <span>•</span>
-          <InfoItem icon={<DeliveryIcon />}>
-            {restaurant.deliveryFee === 0 ? (
-              <span className="text-green">Free</span>
-            ) : (
-              `$ ${restaurant.deliveryFee.toFixed(2)}`
-            )}
-          </InfoItem>
+          {isPickup ? (
+            <InfoItem icon={<LocationIcon />}>{restaurant.address}</InfoItem>
+          ) : (
+            <InfoItem icon={<DeliveryIcon />}>
+              {restaurant.deliveryFee === 0 ? (
+                <span className="text-green">Free</span>
+              ) : (
+                `$ ${restaurant.deliveryFee.toFixed(2)}`
+              )}
+            </InfoItem>
+          )}
         </div>
       </div>
     </article>

@@ -4,6 +4,7 @@ import RestaurantsFilters from '@/components/restaurants-filter/RestaurantsFilte
 import RestaurantsSearch from '@/components/restaurants-filter/RestaurantsSearch';
 import RestaurantsSortBy from '@/components/restaurants-filter/RestaurantsSortBy';
 import RestaurantsList from '@/components/restaurants/RestaurantsList';
+import { FilteredRestaurantsProvider } from '@/context/FilteredRestaurantsContext';
 
 // Dynamic rendering instead of Static because data of URL Search params can only be known at request time for components;
 // Also posible to wrap in Suspense, by making it CSR instead of SSR, but lossing SEO;
@@ -22,22 +23,24 @@ const HomePage = async () => {
         <aside className="hidden min-w-44 sm:block md:px-3 lg:px-6">
           <RestaurantsFilters />
         </aside>
-        <div className="flex flex-col gap-2">
-          <section className="flex items-center justify-between gap-3 md:gap-6">
-            <div className="basis-full md:basis-2/3">
-              <RestaurantsSearch />
-            </div>
-            <div className="hidden basis-1/3 sm:block">
-              <RestaurantsSortBy />
-            </div>
-            <div className="sm:hidden">
-              <MobileFilterMenu />
-            </div>
-          </section>
-          <main>
-            <RestaurantsList restaurants={restaurantsData} />
-          </main>
-        </div>
+        <FilteredRestaurantsProvider>
+          <div className="flex flex-col gap-2">
+            <section className="flex items-center justify-between gap-3 md:gap-6">
+              <div className="basis-full md:basis-2/3">
+                <RestaurantsSearch />
+              </div>
+              <div className="hidden basis-1/3 sm:block">
+                <RestaurantsSortBy />
+              </div>
+              <div className="sm:hidden">
+                <MobileFilterMenu />
+              </div>
+            </section>
+            <main>
+              <RestaurantsList restaurants={restaurantsData} />
+            </main>
+          </div>
+        </FilteredRestaurantsProvider>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 'use client';
 
+import { useFilteredRestaurants } from '@/context/FilteredRestaurantsContext';
 import {
   filterByCategory,
   filterRestaurants,
@@ -7,7 +8,7 @@ import {
   sortRestaurants,
 } from '@/lib/utils';
 import { useSearchParams } from 'next/navigation';
-import { useDeferredValue } from 'react';
+import { useDeferredValue, useEffect } from 'react';
 import EmptyList from './EmptyList';
 import type { FoodCategories, Restaurant } from './RestaurantInfo';
 import RestaurantInfo from './RestaurantInfo';
@@ -18,6 +19,7 @@ type RestaurantsListProps = {
 
 const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
   const searchParams = useSearchParams();
+  const { setFilteredCount } = useFilteredRestaurants();
 
   const params = {
     searchQuery: searchParams.get('search'),
@@ -64,6 +66,10 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
     params.rating !== rating ||
     params.sortOption !== sortOption ||
     params.category !== category;
+
+  useEffect(() => {
+    setFilteredCount(processedRestaurants.length);
+  }, [processedRestaurants.length, setFilteredCount]);
 
   return (
     <div

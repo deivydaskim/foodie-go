@@ -1,14 +1,16 @@
 'use client';
 
 import FilterIcon from '@/assets/basic-icons/filter-icon.svg';
-import Drawer from '@/components/ui//Drawer';
 import Button from '@/components/ui/Button';
+import Drawer from '@/components/ui/Drawer';
+import { useFilteredRestaurants } from '@/context/FilteredRestaurantsContext';
 import { useState } from 'react';
 import RestaurantsFilters from './RestaurantsFilters';
 import RestaurantsSortBy from './RestaurantsSortBy';
 
 const MobileFilterMenu = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { filteredCount } = useFilteredRestaurants();
 
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
@@ -29,7 +31,9 @@ const MobileFilterMenu = () => {
               <RestaurantsSortBy />
               <RestaurantsFilters />
             </div>
-            <Button className="w-full shrink-0">46 Places</Button>
+            <Button onClick={closeDrawer} className="w-full shrink-0">
+              {filteredCount} Places
+            </Button>
           </div>
         </Drawer>
       )}

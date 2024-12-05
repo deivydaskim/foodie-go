@@ -5,8 +5,10 @@ import { calculateDeliveryTime } from '@/lib/utils';
 import InfoItem from './InfoItem';
 
 type Dish = {
-  name: string;
+  title: string;
   price: number;
+  description: string;
+  id: string;
 };
 
 type Menu = {
@@ -36,7 +38,7 @@ export type FoodCategories =
   | 'Vegan';
 
 export type Restaurant = {
-  id: string;
+  id: number;
   name: string;
   categories: FoodCategories[];
   rating: number;

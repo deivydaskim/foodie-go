@@ -3,4 +3,3 @@
 npm run format
 git add . # Stages all changes after
 npm run lint
-formatting

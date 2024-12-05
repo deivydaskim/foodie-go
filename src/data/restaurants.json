@@ -2,9 +2,7 @@
   {
     "id": 1000,
     "name": "fluffy frog restaurant",
-    "categories": [
-      "Desserts"
-    ],
+    "categories": ["Desserts"],
     "rating": 4,
     "numberOfReviews": 25,
     "distance": 4.9,
@@ -175,10 +173,7 @@
   {
     "id": 1001,
     "name": "savory gecko restaurant",
-    "categories": [
-      "Pizza",
-      "Indian"
-    ],
+    "categories": ["Pizza", "Indian"],
     "rating": 4.3,
     "numberOfReviews": 74,
     "distance": 8.4,
@@ -361,10 +356,7 @@
   {
     "id": 1002,
     "name": "rich bee restaurant",
-    "categories": [
-      "Breakfast",
-      "Sea Food"
-    ],
+    "categories": ["Breakfast", "Sea Food"],
     "rating": 2.9,
     "numberOfReviews": 48,
     "distance": 0.9,
@@ -547,11 +539,7 @@
   {
     "id": 1003,
     "name": "moist flamingo restaurant",
-    "categories": [
-      "Sushi",
-      "Italian",
-      "Ice Cream"
-    ],
+    "categories": ["Sushi", "Italian", "Ice Cream"],
     "rating": 4.9,
     "numberOfReviews": 58,
     "distance": 9.5,
@@ -734,10 +722,7 @@
   {
     "id": 1004,
     "name": "delicious whale restaurant",
-    "categories": [
-      "Burgers",
-      "Italian"
-    ],
+    "categories": ["Burgers", "Italian"],
     "rating": 3.7,
     "numberOfReviews": 12,
     "distance": 2.5,
@@ -944,10 +929,7 @@
   {
     "id": 1005,
     "name": "fluffy bat restaurant",
-    "categories": [
-      "Sushi",
-      "Fast Food"
-    ],
+    "categories": ["Sushi", "Fast Food"],
     "rating": 3.6,
     "numberOfReviews": 30,
     "distance": 1.4,
@@ -1118,10 +1100,7 @@
   {
     "id": 1006,
     "name": "golden fox restaurant",
-    "categories": [
-      "Desserts",
-      "Korean"
-    ],
+    "categories": ["Desserts", "Korean"],
     "rating": 5,
     "numberOfReviews": 15,
     "distance": 4.5,
@@ -1298,10 +1277,7 @@
   {
     "id": 1007,
     "name": "spicy Bombay restaurant",
-    "categories": [
-      "Breakfast",
-      "Healthy"
-    ],
+    "categories": ["Breakfast", "Healthy"],
     "rating": 3.7,
     "numberOfReviews": 54,
     "distance": 4.6,
@@ -1490,10 +1466,7 @@
   {
     "id": 1008,
     "name": "salty tiger restaurant",
-    "categories": [
-      "Italian",
-      "Breakfast"
-    ],
+    "categories": ["Italian", "Breakfast"],
     "rating": 2.3,
     "numberOfReviews": 33,
     "distance": 6.6,
@@ -1634,10 +1607,7 @@
   {
     "id": 1009,
     "name": "sour ostrich restaurant",
-    "categories": [
-      "Italian",
-      "Sea Food"
-    ],
+    "categories": ["Italian", "Sea Food"],
     "rating": 1.8,
     "numberOfReviews": 64,
     "distance": 8.6,
@@ -1808,9 +1778,7 @@
   {
     "id": 1010,
     "name": "fresh Guatemalan palm viper restaurant",
-    "categories": [
-      "Fast Food"
-    ],
+    "categories": ["Fast Food"],
     "rating": 3.9,
     "numberOfReviews": 53,
     "distance": 5.9,
@@ -1975,10 +1943,7 @@
   {
     "id": 1011,
     "name": "savory flamingo restaurant",
-    "categories": [
-      "Indian",
-      "Asian"
-    ],
+    "categories": ["Indian", "Asian"],
     "rating": 4.9,
     "numberOfReviews": 68,
     "distance": 9.4,
@@ -2137,11 +2102,7 @@
   {
     "id": 1012,
     "name": "tangy gorilla restaurant",
-    "categories": [
-      "Burgers",
-      "Italian",
-      "Healthy"
-    ],
+    "categories": ["Burgers", "Italian", "Healthy"],
     "rating": 4.5,
     "numberOfReviews": 8,
     "distance": 4.6,
@@ -2318,11 +2279,7 @@
   {
     "id": 1013,
     "name": "moist eagle restaurant",
-    "categories": [
-      "Italian",
-      "Sea Food",
-      "Indian"
-    ],
+    "categories": ["Italian", "Sea Food", "Indian"],
     "rating": 3.1,
     "numberOfReviews": 61,
     "distance": 3.7,
@@ -2487,10 +2444,7 @@
   {
     "id": 1014,
     "name": "delicious rhinoceros restaurant",
-    "categories": [
-      "Asian",
-      "Ice Cream"
-    ],
+    "categories": ["Asian", "Ice Cream"],
     "rating": 3.4,
     "numberOfReviews": 88,
     "distance": 6,
@@ -2679,11 +2633,7 @@
   {
     "id": 1015,
     "name": "savory Swedish White Elkhound restaurant",
-    "categories": [
-      "Ice Cream",
-      "Asian",
-      "Desserts"
-    ],
+    "categories": ["Ice Cream", "Asian", "Desserts"],
     "rating": 1.3,
     "numberOfReviews": 100,
     "distance": 1.6,
@@ -2872,9 +2822,7 @@
   {
     "id": 1016,
     "name": "tangy hippopotamus restaurant",
-    "categories": [
-      "Indian"
-    ],
+    "categories": ["Indian"],
     "rating": 1.8,
     "numberOfReviews": 50,
     "distance": 6.6,
@@ -3033,10 +2981,7 @@
   {
     "id": 1017,
     "name": "golden bat restaurant",
-    "categories": [
-      "Asian",
-      "Fast Food"
-    ],
+    "categories": ["Asian", "Fast Food"],
     "rating": 4.6,
     "numberOfReviews": 55,
     "distance": 8.4,
@@ -3195,9 +3140,7 @@
   {
     "id": 1018,
     "name": "sour wolf restaurant",
-    "categories": [
-      "Burgers"
-    ],
+    "categories": ["Burgers"],
     "rating": 4.1,
     "numberOfReviews": 99,
     "distance": 3.5,
@@ -3386,10 +3329,7 @@
   {
     "id": 1019,
     "name": "crispy Abondance restaurant",
-    "categories": [
-      "Indian",
-      "Sushi"
-    ],
+    "categories": ["Indian", "Sushi"],
     "rating": 4.5,
     "numberOfReviews": 88,
     "distance": 1.4,
@@ -3572,9 +3512,7 @@
   {
     "id": 1020,
     "name": "fresh hippopotamus restaurant",
-    "categories": [
-      "Breakfast"
-    ],
+    "categories": ["Breakfast"],
     "rating": 1.3,
     "numberOfReviews": 59,
     "distance": 5.7,
@@ -3751,9 +3689,7 @@
   {
     "id": 1021,
     "name": "juicy shark restaurant",
-    "categories": [
-      "Sushi"
-    ],
+    "categories": ["Sushi"],
     "rating": 3.2,
     "numberOfReviews": 36,
     "distance": 3.1,
@@ -3936,9 +3872,7 @@
   {
     "id": 1022,
     "name": "sour Cape lion restaurant",
-    "categories": [
-      "Korean"
-    ],
+    "categories": ["Korean"],
     "rating": 2.9,
     "numberOfReviews": 81,
     "distance": 7.4,
@@ -4097,9 +4031,7 @@
   {
     "id": 1023,
     "name": "juicy monkey restaurant",
-    "categories": [
-      "Ice Cream"
-    ],
+    "categories": ["Ice Cream"],
     "rating": 4.4,
     "numberOfReviews": 74,
     "distance": 8.8,
@@ -4252,9 +4184,7 @@
   {
     "id": 1024,
     "name": "rich ostrich restaurant",
-    "categories": [
-      "Indian"
-    ],
+    "categories": ["Indian"],
     "rating": 4.7,
     "numberOfReviews": 67,
     "distance": 5.7,
@@ -4419,10 +4349,7 @@
   {
     "id": 1025,
     "name": "tender gorilla restaurant",
-    "categories": [
-      "Burgers",
-      "Fast Food"
-    ],
+    "categories": ["Burgers", "Fast Food"],
     "rating": 4.3,
     "numberOfReviews": 25,
     "distance": 6.8,
@@ -4581,11 +4508,7 @@
   {
     "id": 1026,
     "name": "spicy ostrich restaurant",
-    "categories": [
-      "Sea Food",
-      "Sushi",
-      "Vegan"
-    ],
+    "categories": ["Sea Food", "Sushi", "Vegan"],
     "rating": 2.2,
     "numberOfReviews": 42,
     "distance": 4.4,
@@ -4792,9 +4715,7 @@
   {
     "id": 1027,
     "name": "juicy Rohu restaurant",
-    "categories": [
-      "Fast Food"
-    ],
+    "categories": ["Fast Food"],
     "rating": 4.8,
     "numberOfReviews": 35,
     "distance": 4.2,
@@ -4959,9 +4880,7 @@
   {
     "id": 1028,
     "name": "bitter giraffe restaurant",
-    "categories": [
-      "Desserts"
-    ],
+    "categories": ["Desserts"],
     "rating": 1.6,
     "numberOfReviews": 42,
     "distance": 9.5,
@@ -5138,11 +5057,7 @@
   {
     "id": 1029,
     "name": "crunchy polar bear restaurant",
-    "categories": [
-      "Ice Cream",
-      "Healthy",
-      "Sea Food"
-    ],
+    "categories": ["Ice Cream", "Healthy", "Sea Food"],
     "rating": 4.1,
     "numberOfReviews": 10,
     "distance": 2.1,
@@ -5355,9 +5270,7 @@
   {
     "id": 1030,
     "name": "smoky Comtois Horse restaurant",
-    "categories": [
-      "Korean"
-    ],
+    "categories": ["Korean"],
     "rating": 4.7,
     "numberOfReviews": 81,
     "distance": 7.4,
@@ -5540,11 +5453,7 @@
   {
     "id": 1031,
     "name": "bitter bee restaurant",
-    "categories": [
-      "Healthy",
-      "Korean",
-      "Italian"
-    ],
+    "categories": ["Healthy", "Korean", "Italian"],
     "rating": 3.6,
     "numberOfReviews": 44,
     "distance": 6.3,
@@ -5763,9 +5672,7 @@
   {
     "id": 1032,
     "name": "bitter Terrier Brasileiro restaurant",
-    "categories": [
-      "Vegan"
-    ],
+    "categories": ["Vegan"],
     "rating": 4.4,
     "numberOfReviews": 3,
     "distance": 0.3,
@@ -5960,11 +5867,7 @@
   {
     "id": 1033,
     "name": "smoky peacock restaurant",
-    "categories": [
-      "Burgers",
-      "Pizza",
-      "Indian"
-    ],
+    "categories": ["Burgers", "Pizza", "Indian"],
     "rating": 4.9,
     "numberOfReviews": 100,
     "distance": 1.8,
@@ -6147,11 +6050,7 @@
   {
     "id": 1034,
     "name": "creamy tiger restaurant",
-    "categories": [
-      "Pizza",
-      "Breakfast",
-      "Ice Cream"
-    ],
+    "categories": ["Pizza", "Breakfast", "Ice Cream"],
     "rating": 5,
     "numberOfReviews": 98,
     "distance": 9.4,
@@ -6328,10 +6227,7 @@
   {
     "id": 1035,
     "name": "bitter monkey restaurant",
-    "categories": [
-      "Desserts",
-      "Vegan"
-    ],
+    "categories": ["Desserts", "Vegan"],
     "rating": 4.6,
     "numberOfReviews": 99,
     "distance": 3.5,
@@ -6514,9 +6410,7 @@
   {
     "id": 1036,
     "name": "delicious panda restaurant",
-    "categories": [
-      "Italian"
-    ],
+    "categories": ["Italian"],
     "rating": 3,
     "numberOfReviews": 71,
     "distance": 9.8,
@@ -6681,10 +6575,7 @@
   {
     "id": 1037,
     "name": "sweet sea lion restaurant",
-    "categories": [
-      "Pizza",
-      "Asian"
-    ],
+    "categories": ["Pizza", "Asian"],
     "rating": 2.6,
     "numberOfReviews": 10,
     "distance": 9.4,
@@ -6831,10 +6722,7 @@
   {
     "id": 1038,
     "name": "creamy shark restaurant",
-    "categories": [
-      "Italian",
-      "Indian"
-    ],
+    "categories": ["Italian", "Indian"],
     "rating": 3.5,
     "numberOfReviews": 81,
     "distance": 8.2,
@@ -6999,11 +6887,7 @@
   {
     "id": 1039,
     "name": "zesty sea lion restaurant",
-    "categories": [
-      "Breakfast",
-      "Healthy",
-      "Sushi"
-    ],
+    "categories": ["Breakfast", "Healthy", "Sushi"],
     "rating": 1.1,
     "numberOfReviews": 11,
     "distance": 1.3,
@@ -7210,11 +7094,7 @@
   {
     "id": 1040,
     "name": "crunchy elephant restaurant",
-    "categories": [
-      "Ice Cream",
-      "Breakfast",
-      "Korean"
-    ],
+    "categories": ["Ice Cream", "Breakfast", "Korean"],
     "rating": 2.3,
     "numberOfReviews": 2,
     "distance": 9.8,
@@ -7403,10 +7283,7 @@
   {
     "id": 1041,
     "name": "spicy Nashville Warbler restaurant",
-    "categories": [
-      "Sushi",
-      "Desserts"
-    ],
+    "categories": ["Sushi", "Desserts"],
     "rating": 3,
     "numberOfReviews": 66,
     "distance": 7.6,
@@ -7571,9 +7448,7 @@
   {
     "id": 1042,
     "name": "spicy wolf restaurant",
-    "categories": [
-      "Indian"
-    ],
+    "categories": ["Indian"],
     "rating": 2.6,
     "numberOfReviews": 18,
     "distance": 7.6,
@@ -7762,9 +7637,7 @@
   {
     "id": 1043,
     "name": "sour kangaroo restaurant",
-    "categories": [
-      "Italian"
-    ],
+    "categories": ["Italian"],
     "rating": 4.2,
     "numberOfReviews": 55,
     "distance": 9.7,
@@ -7923,10 +7796,7 @@
   {
     "id": 1044,
     "name": "sour kangaroo restaurant",
-    "categories": [
-      "Desserts",
-      "Korean"
-    ],
+    "categories": ["Desserts", "Korean"],
     "rating": 1.2,
     "numberOfReviews": 84,
     "distance": 8.4,
@@ -8091,9 +7961,7 @@
   {
     "id": 1045,
     "name": "delicious polar bear restaurant",
-    "categories": [
-      "Vegan"
-    ],
+    "categories": ["Vegan"],
     "rating": 3,
     "numberOfReviews": 65,
     "distance": 8.7,
@@ -8282,11 +8150,7 @@
   {
     "id": 1046,
     "name": "smoky Scottish Fold restaurant",
-    "categories": [
-      "Pizza",
-      "Ice Cream",
-      "Korean"
-    ],
+    "categories": ["Pizza", "Ice Cream", "Korean"],
     "rating": 1.5,
     "numberOfReviews": 93,
     "distance": 2.3,
@@ -8457,10 +8321,7 @@
   {
     "id": 1047,
     "name": "tangy crocodile restaurant",
-    "categories": [
-      "Pizza",
-      "Vegan"
-    ],
+    "categories": ["Pizza", "Vegan"],
     "rating": 2.2,
     "numberOfReviews": 23,
     "distance": 5.1,
@@ -8625,9 +8486,7 @@
   {
     "id": 1048,
     "name": "savory zebra restaurant",
-    "categories": [
-      "Breakfast"
-    ],
+    "categories": ["Breakfast"],
     "rating": 1.1,
     "numberOfReviews": 99,
     "distance": 9.4,
@@ -8786,11 +8645,7 @@
   {
     "id": 1049,
     "name": "fluffy Cape lion restaurant",
-    "categories": [
-      "Korean",
-      "Sushi",
-      "Vegan"
-    ],
+    "categories": ["Korean", "Sushi", "Vegan"],
     "rating": 2.7,
     "numberOfReviews": 2,
     "distance": 2.5,

@@ -75,9 +75,7 @@ const RestaurantInfo = ({ restaurant }: RestaurantInfoProps) => {
         IMAGE
       </div>
       <div className="flex flex-col justify-between gap-1 p-3">
-        <h3 className="text-lg font-semibold capitalize header3">
-          {restaurant.name}
-        </h3>
+        <h3 className="text-lg font-semibold capitalize">{restaurant.name}</h3>
         <p className="text-gray-400 subtitle1">
           {restaurant.categories.join(', ')}
         </p>

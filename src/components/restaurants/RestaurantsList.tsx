@@ -21,22 +21,23 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
   const searchParams = useSearchParams();
   const { setFilteredCount } = useFilteredRestaurants();
 
-  const params = {
-    searchQuery: searchParams.get('search'),
-    openNow: searchParams.get('openNow') === 'true',
-    freeDelivery: searchParams.get('freeDelivery') === 'true',
-    rating: Number(searchParams.get('rating')),
-    sortOption: searchParams.get('sort'),
-    category: searchParams.get('category'),
-  };
+  const openNow = searchParams.get('openNow') === 'true';
+  const freeDelivery = searchParams.get('freeDelivery') === 'true';
+  const rating = Number(searchParams.get('rating'));
+  const sortOption = searchParams.get('sort');
+  const category = searchParams.get('category');
+  const searchQuery = searchParams.get('search');
 
-  const { freeDelivery, openNow, rating, searchQuery, sortOption, category } =
-    useDeferredValue(params);
+  // Could use useDeferredValue for all params to avoid UI/input lag for long renderings, but its fine for now
+  const deferredSearchQuery = useDeferredValue(searchQuery);
 
   let processedRestaurants = restaurants;
 
-  if (searchQuery) {
-    processedRestaurants = searchRestaurants(processedRestaurants, searchQuery);
+  if (deferredSearchQuery) {
+    processedRestaurants = searchRestaurants(
+      processedRestaurants,
+      deferredSearchQuery,
+    );
   }
 
   if (category) {
@@ -59,13 +60,7 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
     processedRestaurants = sortRestaurants(processedRestaurants, sortOption);
   }
 
-  const isPending =
-    params.searchQuery !== searchQuery ||
-    params.openNow !== openNow ||
-    params.freeDelivery !== freeDelivery ||
-    params.rating !== rating ||
-    params.sortOption !== sortOption ||
-    params.category !== category;
+  const isPending = searchQuery !== deferredSearchQuery;
 
   useEffect(() => {
     setFilteredCount(processedRestaurants.length);
@@ -74,11 +69,11 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
   return (
     <div
       className={`relative flex flex-col gap-4 pt-4 transition-opacity ${
-        isPending ? 'opacity-50' : ''
+        isPending ? 'opacity-80' : ''
       }`}
     >
       {processedRestaurants.length === 0 ? (
-        <EmptyList />
+        <EmptyList searchQuery={deferredSearchQuery} />
       ) : (
         <>
           <h2>Order from {processedRestaurants.length} places</h2>

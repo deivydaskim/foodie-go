@@ -41,7 +41,7 @@ const RestaurantsSortBy = () => {
       button={sortButton}
     >
       <div className="flex flex-col gap-3 p-6">
-        <h4 className="header4">Sort by</h4>
+        <h4>Sort by</h4>
         <RadioGroup value={tempSort} onChange={setTempSort}>
           {SORT_OPTIONS.map(option => (
             <Radio

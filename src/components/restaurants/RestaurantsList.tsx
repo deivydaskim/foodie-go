@@ -10,8 +10,8 @@ import {
 import { useSearchParams } from 'next/navigation';
 import { useDeferredValue, useEffect } from 'react';
 import EmptyList from './EmptyList';
-import type { FoodCategories, Restaurant } from './RestaurantInfo';
-import RestaurantInfo from './RestaurantInfo';
+import type { FoodCategories, Restaurant } from './RestaurantsItem';
+import RestaurantItem from './RestaurantsItem';
 
 type RestaurantsListProps = {
   restaurants: Restaurant[];
@@ -60,29 +60,23 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
     processedRestaurants = sortRestaurants(processedRestaurants, sortOption);
   }
 
-  const isPending = searchQuery !== deferredSearchQuery;
-
   useEffect(() => {
     setFilteredCount(processedRestaurants.length);
   }, [processedRestaurants.length, setFilteredCount]);
 
   return (
-    <div
-      className={`relative flex flex-col gap-4 pt-4 transition-opacity ${
-        isPending ? 'opacity-80' : ''
-      }`}
-    >
+    <main className="mt-4">
       {processedRestaurants.length === 0 ? (
         <EmptyList searchQuery={deferredSearchQuery} />
       ) : (
-        <>
+        <div className="animate-appear space-y-4">
           <h2>Order from {processedRestaurants.length} places</h2>
           {processedRestaurants.map(restaurant => (
-            <RestaurantInfo key={restaurant.id} restaurant={restaurant} />
+            <RestaurantItem key={restaurant.id} restaurant={restaurant} />
           ))}
-        </>
+        </div>
       )}
-    </div>
+    </main>
   );
 };
 

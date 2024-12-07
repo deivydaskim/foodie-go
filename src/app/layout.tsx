@@ -24,11 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={`${poppins.variable}`}>
         <PickupDeliveryProvider>
           <Header />
-          {children}
+          <div className="m-auto max-w-[1168px] px-3 md:px-10">{children}</div>
         </PickupDeliveryProvider>
       </body>
     </html>

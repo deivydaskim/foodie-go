@@ -12,7 +12,7 @@ const EmptyList = ({ searchQuery }: EmptyListProps) => {
   };
 
   return (
-    <div className="my-10 flex flex-col items-center gap-5 p-2">
+    <div className="my-10 flex animate-appear flex-col items-center gap-5 p-2">
       {searchQuery ? (
         <>
           <SearchIcon width="100px" height="100px" />

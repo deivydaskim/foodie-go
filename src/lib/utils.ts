@@ -1,7 +1,7 @@
 import type {
   FoodCategories,
   Restaurant,
-} from '@/components/restaurants/RestaurantInfo';
+} from '@/components/restaurants/RestaurantsItem';
 
 export const calculateDeliveryTime = (distance: number) => {
   const BASE_TIME = 10;

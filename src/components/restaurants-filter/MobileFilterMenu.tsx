@@ -16,7 +16,7 @@ const MobileFilterMenu = () => {
   const closeDrawer = () => setIsDrawerOpen(false);
 
   return (
-    <>
+    <div className="sm:hidden">
       <Button
         onClick={openDrawer}
         variant="rounded"
@@ -37,7 +37,7 @@ const MobileFilterMenu = () => {
           </div>
         </Drawer>
       )}
-    </>
+    </div>
   );
 };
 

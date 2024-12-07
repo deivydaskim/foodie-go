@@ -17,7 +17,7 @@ const HomePage = async () => {
   const restaurantsData = await res.json();
 
   return (
-    <div className="m-auto max-w-[1168px] px-3 md:px-10">
+    <>
       <FoodFilterSlider />
       <div className="grid grid-cols-1 gap-1 rounded-xl bg-gray-100 px-2 py-3 sm:grid-cols-[1fr_3fr] md:px-4 md:py-5">
         <aside className="hidden min-w-44 sm:block md:px-3 lg:px-6">
@@ -32,17 +32,13 @@ const HomePage = async () => {
               <div className="hidden basis-1/3 sm:block">
                 <RestaurantsSortBy />
               </div>
-              <div className="sm:hidden">
-                <MobileFilterMenu />
-              </div>
+              <MobileFilterMenu />
             </section>
-            <main>
-              <RestaurantsList restaurants={restaurantsData} />
-            </main>
+            <RestaurantsList restaurants={restaurantsData} />
           </div>
         </FilteredRestaurantsProvider>
       </div>
-    </div>
+    </>
   );
 };
 

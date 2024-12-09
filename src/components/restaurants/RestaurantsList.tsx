@@ -1,16 +1,10 @@
 'use client';
 
 import { useFilteredRestaurants } from '@/context/FilteredRestaurantsContext';
-import {
-  filterByCategory,
-  filterRestaurants,
-  searchRestaurants,
-  sortRestaurants,
-} from '@/lib/utils';
+import { processRestaurants } from '@/lib/utils'; // Import the new utility function
 import { useSearchParams } from 'next/navigation';
-import { useDeferredValue, useEffect } from 'react';
+import { useEffect } from 'react';
 import EmptyList from './EmptyList';
-import type { FoodCategories, Restaurant } from './RestaurantsItem';
 import RestaurantItem from './RestaurantsItem';
 
 type RestaurantsListProps = {
@@ -28,37 +22,16 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
   const category = searchParams.get('category');
   const searchQuery = searchParams.get('search');
 
-  // Could use useDeferredValue for all params to avoid UI/input lag for long renderings, but its fine for now
-  const deferredSearchQuery = useDeferredValue(searchQuery);
-
-  let processedRestaurants = restaurants;
-
-  if (deferredSearchQuery) {
-    processedRestaurants = searchRestaurants(
-      processedRestaurants,
-      deferredSearchQuery,
-    );
-  }
-
-  if (category) {
-    processedRestaurants = filterByCategory(
-      processedRestaurants,
-      category as FoodCategories,
-    );
-  }
-
-  if (openNow || freeDelivery || rating > 0) {
-    processedRestaurants = filterRestaurants(
-      processedRestaurants,
-      openNow,
-      freeDelivery,
-      rating,
-    );
-  }
-
-  if (sortOption) {
-    processedRestaurants = sortRestaurants(processedRestaurants, sortOption);
-  }
+  // Process restaurants with search/filter options if needed
+  const processedRestaurants = processRestaurants({
+    restaurants,
+    searchQuery,
+    category,
+    openNow,
+    freeDelivery,
+    rating,
+    sortOption,
+  });
 
   useEffect(() => {
     setFilteredCount(processedRestaurants.length);
@@ -67,12 +40,22 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
   return (
     <main className="mt-4">
       {processedRestaurants.length === 0 ? (
-        <EmptyList searchQuery={deferredSearchQuery} />
+        <EmptyList searchQuery={searchQuery} />
       ) : (
         <div className="animate-appear space-y-4">
           <h2>Order from {processedRestaurants.length} places</h2>
           {processedRestaurants.map(restaurant => (
-            <RestaurantItem key={restaurant.id} restaurant={restaurant} />
+            <RestaurantItem
+              key={restaurant.id}
+              id={restaurant.id}
+              name={restaurant.name}
+              categories={restaurant.categories}
+              rating={restaurant.rating}
+              numberOfReviews={restaurant.numberOfReviews}
+              distance={restaurant.distance}
+              address={restaurant.address}
+              deliveryFee={restaurant.deliveryFee}
+            />
           ))}
         </div>
       )}

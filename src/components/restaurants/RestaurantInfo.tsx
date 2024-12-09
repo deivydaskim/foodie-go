@@ -8,7 +8,6 @@ import TimeIcon from '@/assets/basic-icons/time.svg';
 import { usePickupDelivery } from '@/context/PickupDeliveryContext';
 import { calculateDeliveryTime } from '@/lib/utils';
 import InfoItem from './InfoItem';
-import type { Restaurant } from './RestaurantsItem';
 
 type RestaurantInfoProps = Pick<
   Restaurant,
@@ -30,7 +29,8 @@ const RestaurantInfo = ({
   name,
   categories,
 }: RestaurantInfoProps) => {
-  const [deliveryTime, delayedDeliveryTime] = calculateDeliveryTime(distance);
+  const { deliveryTime, deliveryTimeWithDelay } =
+    calculateDeliveryTime(distance);
 
   const { isPickup } = usePickupDelivery();
 
@@ -47,7 +47,7 @@ const RestaurantInfo = ({
           <InfoItem icon={<DistanceIcon />}>{`${distance} km`}</InfoItem>
         ) : (
           <InfoItem icon={<TimeIcon />}>
-            {`${deliveryTime}-${delayedDeliveryTime} min`}
+            {`${deliveryTime}-${deliveryTimeWithDelay} min`}
           </InfoItem>
         )}
         <span>•</span>

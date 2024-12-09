@@ -1,16 +1,12 @@
-import type {
-  FoodCategories,
-  Restaurant,
-} from '@/components/restaurants/RestaurantsItem';
-
 export const calculateDeliveryTime = (distance: number) => {
   const BASE_TIME = 10;
   const TIME_FOR_KM = 5;
   const POSSIBLE_DELAY = 10;
 
-  const totalTime = Math.round(distance) * TIME_FOR_KM + BASE_TIME;
+  const deliveryTime = Math.round(distance) * TIME_FOR_KM + BASE_TIME;
+  const deliveryTimeWithDelay = deliveryTime + POSSIBLE_DELAY;
 
-  return [totalTime, totalTime + POSSIBLE_DELAY];
+  return { deliveryTime, deliveryTimeWithDelay };
 };
 
 export const updateQueryParam = (
@@ -40,20 +36,12 @@ export const searchRestaurants = (
   );
 };
 
-export const filterByCategory = (
-  restaurants: Restaurant[],
-  category: FoodCategories,
-) => {
-  return restaurants.filter(restaurant =>
-    restaurant.categories.includes(category),
-  );
-};
-
 export const filterRestaurants = (
   restaurants: Restaurant[],
-  openNow: boolean,
-  freeDelivery: boolean,
-  rating: number,
+  openNow: boolean | undefined,
+  freeDelivery: boolean | undefined,
+  rating: number | undefined,
+  category: FoodCategories | undefined,
 ): Restaurant[] => {
   return restaurants.filter(restaurant => {
     if (openNow && !restaurant.isOpen) {
@@ -62,7 +50,10 @@ export const filterRestaurants = (
     if (freeDelivery && restaurant.deliveryFee !== 0) {
       return false;
     }
-    if (rating > 0 && restaurant.rating < rating) {
+    if (rating && rating > 0 && restaurant.rating < rating) {
+      return false;
+    }
+    if (category && !restaurant.categories.includes(category)) {
       return false;
     }
     return true;
@@ -85,4 +76,46 @@ export const sortRestaurants = (
         return 0;
     }
   });
+};
+
+type ProcessRestaurants = {
+  restaurants: Restaurant[];
+  searchQuery?: string | null;
+  category?: string | null;
+  openNow?: boolean;
+  freeDelivery?: boolean;
+  rating?: number;
+  sortOption?: string | null;
+};
+
+export const processRestaurants = ({
+  restaurants,
+  searchQuery,
+  category,
+  openNow,
+  freeDelivery,
+  rating = 0,
+  sortOption,
+}: ProcessRestaurants): Restaurant[] => {
+  let processedRestaurants = restaurants;
+
+  if (searchQuery) {
+    processedRestaurants = searchRestaurants(processedRestaurants, searchQuery);
+  }
+
+  if (openNow || freeDelivery || rating > 0 || category) {
+    processedRestaurants = filterRestaurants(
+      processedRestaurants,
+      openNow,
+      freeDelivery,
+      rating,
+      category as FoodCategories,
+    );
+  }
+
+  if (sortOption) {
+    processedRestaurants = sortRestaurants(processedRestaurants, sortOption);
+  }
+
+  return processedRestaurants;
 };

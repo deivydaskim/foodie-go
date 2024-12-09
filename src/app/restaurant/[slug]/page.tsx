@@ -1,11 +1,10 @@
+import FoodAddButton from '@/components/FoodAddButton';
 import RestaurantInfo from '@/components/restaurants/RestaurantInfo';
-import type { Restaurant } from '@/components/restaurants/RestaurantsItem';
 import restaurantsData from '@/data/restaurants.json';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import testDishImage from '@/assets/images/bento-1.jpg';
-import FoodAddButton from '@/components/FoodAddButton';
 
 export async function generateStaticParams() {
   const restaurants = restaurantsData;

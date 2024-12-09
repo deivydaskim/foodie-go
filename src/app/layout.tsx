@@ -5,6 +5,7 @@ import Header from '@/components/header/Header';
 import './globals.css';
 
 import { PickupDeliveryProvider } from '@/context/PickupDeliveryContext';
+import { ShoppingCartProvider } from '@/context/ShoppingCartContext';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -24,12 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body className={`${poppins.variable}`}>
-        <PickupDeliveryProvider>
-          <Header />
-          <div className="m-auto max-w-[1168px] px-3 md:px-10">{children}</div>
-        </PickupDeliveryProvider>
+        <ShoppingCartProvider>
+          <PickupDeliveryProvider>
+            <Header />
+            <div className="m-auto max-w-[1168px] px-3 md:px-10">
+              {children}
+            </div>
+          </PickupDeliveryProvider>
+        </ShoppingCartProvider>
       </body>
     </html>
   );

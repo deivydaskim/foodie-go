@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import testDishImage from '@/assets/images/bento-1.jpg';
+import SectionNavigator from '@/components/SectionNavigator';
 
 export async function generateStaticParams() {
   const restaurants = restaurantsData;
@@ -30,7 +31,7 @@ export default async function Page({ params }: Params) {
     notFound();
   }
 
-  const restaurantMenuKeys = Object.keys(restaurant.menu);
+  const restaurantMenuTitles = Object.keys(restaurant.menu);
 
   return (
     <div className="rounded-xl bg-gray-100 px-2 py-3 md:px-4 md:py-5">
@@ -44,24 +45,13 @@ export default async function Page({ params }: Params) {
         numberOfReviews={restaurant.numberOfReviews}
         rating={restaurant.rating}
       />
-      <ul className="flex gap-6 overflow-auto border-b-2 border-black px-6 py-2 scrollbar-thin">
-        {restaurantMenuKeys.map(menuKey => (
-          <li key={menuKey}>
-            <a
-              href={`#${menuKey}`}
-              className="rounded-full px-4 py-2 capitalize button hover:bg-blueGray-100"
-            >
-              {menuKey}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <SectionNavigator sections={restaurantMenuTitles} />
       <main>
-        {restaurantMenuKeys.map(menuKey => (
-          <section id={menuKey} key={menuKey} className="my-10">
-            <h2 className="my-6 capitalize">{menuKey}</h2>
+        {restaurantMenuTitles.map(title => (
+          <section id={title} key={title} className="my-10">
+            <h2 className="my-6 capitalize">{title}</h2>
             <div className="grid grid-cols-2 gap-6">
-              {restaurant.menu[menuKey as keyof typeof restaurant.menu].map(
+              {restaurant.menu[title as keyof typeof restaurant.menu].map(
                 dish => (
                   <div
                     key={dish.id}
@@ -82,7 +72,13 @@ export default async function Page({ params }: Params) {
                         height={100}
                         className="block h-full rounded-lg object-cover"
                       />
-                      <FoodAddButton />
+                      <FoodAddButton
+                        restaurantName={restaurant.name}
+                        className="absolute right-2 top-2"
+                        id={dish.id}
+                        title={dish.title}
+                        price={dish.price}
+                      />
                     </div>
                   </div>
                 ),

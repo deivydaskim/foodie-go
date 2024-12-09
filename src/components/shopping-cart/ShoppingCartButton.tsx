@@ -1,6 +1,7 @@
 'use client';
 
 import ShoppingCartIcon from '@/assets/basic-icons/shopping-cart-icon.svg';
+import { useShoppingCart } from '@/context/ShoppingCartContext';
 import useIsMobileScreen from '@/hooks/useIsMobileScreen';
 import { useState } from 'react';
 import Button from '../ui/Button';
@@ -10,8 +11,9 @@ import ShoppingCartDetails from './ShoppingCartDetails';
 
 const ShoppingCartButton = () => {
   const isMobile = useIsMobileScreen();
+  const { totalItems } = useShoppingCart();
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const cartItems = useState(0)[0];
 
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
@@ -24,7 +26,7 @@ const ShoppingCartButton = () => {
     >
       <ShoppingCartIcon />
       <span className="absolute right-0 top-0 h-4 w-4 rounded-full bg-green text-xs">
-        {cartItems}
+        {totalItems}
       </span>
     </Button>
   );

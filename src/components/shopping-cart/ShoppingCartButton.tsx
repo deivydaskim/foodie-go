@@ -31,22 +31,18 @@ const ShoppingCartButton = () => {
     </Button>
   );
 
-  if (isMobile) {
-    return (
-      <>
-        {cartButton}
-        {isDrawerOpen && (
-          <Drawer title="Shopping Cart" onClose={closeDrawer}>
-            <ShoppingCartDetails />
-          </Drawer>
-        )}
-      </>
-    );
-  }
-
-  return (
+  return isMobile ? (
+    <>
+      {cartButton}
+      {isDrawerOpen && (
+        <Drawer title="Shopping Cart" onClose={closeDrawer}>
+          <ShoppingCartDetails onClose={closeDrawer} />
+        </Drawer>
+      )}
+    </>
+  ) : (
     <PopupButton button={cartButton}>
-      <ShoppingCartDetails />
+      {({ close }) => <ShoppingCartDetails onClose={close} />}
     </PopupButton>
   );
 };

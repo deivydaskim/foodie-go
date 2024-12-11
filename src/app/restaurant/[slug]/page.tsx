@@ -4,7 +4,9 @@ import restaurantsData from '@/data/restaurants.json';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
+import ImportantIcon from '@/assets/basic-icons/important-icon.svg';
 import testDishImage from '@/assets/images/bento-1.jpg';
+import testRestaurantImage from '@/assets/images/pexels-brett-sayles-1322184.jpg';
 import SectionNavigator from '@/components/SectionNavigator';
 
 export async function generateStaticParams() {
@@ -31,11 +33,18 @@ export default async function Page({ params }: Params) {
     notFound();
   }
 
-  const restaurantMenuTitles = Object.keys(restaurant.menu);
+  const menuTitles = Object.keys(restaurant.menu);
 
   return (
     <div className="rounded-xl bg-gray-100 px-2 py-3 md:px-4 md:py-5">
-      <div className="h-32 rounded-lg bg-gray-300 sm:h-44">IMAGE</div>
+      <div className="h-32 rounded-lg bg-gray-300 sm:h-44">
+        <Image
+          className="h-full w-full rounded-lg object-cover"
+          src={testRestaurantImage}
+          alt={restaurant.name}
+          width={900}
+        />
+      </div>
       <RestaurantInfo
         name={restaurant.name}
         categories={restaurant.categories}
@@ -45,32 +54,41 @@ export default async function Page({ params }: Params) {
         numberOfReviews={restaurant.numberOfReviews}
         rating={restaurant.rating}
       />
-      <SectionNavigator sections={restaurantMenuTitles} />
+      <SectionNavigator sections={menuTitles} />
       <main>
-        {restaurantMenuTitles.map(title => (
+        {menuTitles.map(title => (
           <section id={title} key={title} className="my-10">
             <h2 className="my-6 capitalize">{title}</h2>
-            <div className="grid grid-cols-2 gap-6">
+            {title === 'lunch' && (
+              <div className="relative -top-4 flex items-center gap-2 text-gray-400 caption">
+                <ImportantIcon width={16} height={16} />
+                <p>
+                  Please note: products in this category can only be delivered
+                  between: 12:00 - 16:00
+                </p>
+              </div>
+            )}
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
               {restaurant.menu[title as keyof typeof restaurant.menu].map(
                 dish => (
                   <div
                     key={dish.id}
-                    className="flex justify-between gap-2 rounded-xl bg-white p-4 shadow-xl"
+                    className="flex justify-between gap-2 rounded-2xl bg-white p-4 shadow-xl"
                   >
                     <div className="basis-2/3 space-y-2">
                       <h5 className="body2">{dish.title}</h5>
                       <p className="subtitle1">${dish.price.toFixed(2)}</p>
-                      <p className="text-gray-400 subtitle2">
+                      <p className="line-clamp-2 text-gray-400 subtitle2">
                         {dish.description}
                       </p>
                     </div>
-                    <div className="relative h-24 w-28 rounded-lg bg-gray-300 text-center">
+                    <div className="relative h-24 w-28 self-center rounded-xl bg-gray-300 text-center">
                       <Image
                         alt="image"
                         src={testDishImage}
                         width={150}
                         height={100}
-                        className="block h-full rounded-lg object-cover"
+                        className="h-full rounded-lg object-cover"
                       />
                       <FoodAddButton
                         restaurantName={restaurant.name}

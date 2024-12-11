@@ -1,9 +1,7 @@
 'use client';
 
-import { useFilteredRestaurants } from '@/context/FilteredRestaurantsContext';
-import { processRestaurants } from '@/lib/utils'; // Import the new utility function
+import { processRestaurants } from '@/lib/utils';
 import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
 import EmptyList from './EmptyList';
 import RestaurantItem from './RestaurantsItem';
 
@@ -13,7 +11,6 @@ type RestaurantsListProps = {
 
 const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
   const searchParams = useSearchParams();
-  const { setFilteredCount } = useFilteredRestaurants();
 
   const openNow = searchParams.get('openNow') === 'true';
   const freeDelivery = searchParams.get('freeDelivery') === 'true';
@@ -32,10 +29,6 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
     rating,
     sortOption,
   });
-
-  useEffect(() => {
-    setFilteredCount(processedRestaurants.length);
-  }, [processedRestaurants.length, setFilteredCount]);
 
   return (
     <main className="mt-4">

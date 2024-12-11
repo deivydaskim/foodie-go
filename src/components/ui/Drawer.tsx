@@ -71,8 +71,8 @@ const Drawer = ({ title, onClose, children }: DrawerProps) => {
       onTouchEnd={handleTouchEnd}
     >
       <div className="flex h-full w-full flex-col bg-white">
-        <div className="flex items-center gap-2 p-4">
-          <button onClick={handleClose}>
+        <div onClick={handleClose} className="flex items-center gap-2 p-4">
+          <button>
             <BackIcon />
           </button>
           <h2 className="body2">{title}</h2>

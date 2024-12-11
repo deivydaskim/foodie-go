@@ -6,14 +6,14 @@ import { usePickupDelivery } from '@/context/PickupDeliveryContext';
 import { Switch } from '@headlessui/react';
 import SwitchLabel from './SwitchLabel';
 
-const DeliverySwitch = () => {
+const DeliverySwitch = ({ className = '' }) => {
   const { isPickup, togglePickupDelivery } = usePickupDelivery();
 
   return (
     <Switch
       checked={isPickup}
       onChange={togglePickupDelivery}
-      className="relative inline-flex h-9 w-48 items-center justify-between rounded-full bg-blueGray-100 px-1 button"
+      className={`relative inline-flex h-9 w-48 items-center justify-between rounded-full bg-blueGray-100 px-1 button ${className}`}
       aria-label={isPickup ? 'Switch to Delivery' : 'Switch to Pickup'}
     >
       <span

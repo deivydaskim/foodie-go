@@ -1,4 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
+
+import testRestaurantImage from '@/assets/images/pexels-brett-sayles-1322184.jpg';
 import RestaurantInfo from './RestaurantInfo';
 
 type RestaurantsItemProps = Pick<
@@ -25,11 +28,16 @@ const RestaurantsItem = ({
 }: RestaurantsItemProps) => {
   return (
     <Link
-      className="flex flex-col gap-4 rounded-xl bg-white shadow-lg sm:flex-row"
+      className="flex flex-col gap-1 rounded-xl bg-white shadow-lg sm:flex-row sm:gap-4"
       href={`/restaurant/${id}`}
     >
-      <div className="min-h-[104px] min-w-[184px] rounded-xl bg-gray-600 text-center">
-        IMAGE
+      <div className="h-28 w-full shrink-0 rounded-se-lg text-center sm:h-auto sm:w-40 sm:rounded-xl">
+        <Image
+          className="h-full w-full rounded-tl-xl rounded-tr-xl object-cover sm:rounded-xl"
+          src={testRestaurantImage}
+          alt={name}
+          width={500}
+        />
       </div>
       <RestaurantInfo
         name={name}

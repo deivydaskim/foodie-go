@@ -5,7 +5,7 @@ import { useShoppingCart } from '@/context/ShoppingCartContext';
 import FoodAddButton from '../FoodAddButton';
 import Button from '../ui/Button';
 
-const ShoppingCartDetails = () => {
+const ShoppingCartDetails = ({ onClose }: { onClose?: () => void }) => {
   const { cartItems, groupedItems, subtotalPrice, totalPrice } =
     useShoppingCart();
 
@@ -19,10 +19,7 @@ const ShoppingCartDetails = () => {
             <p className="text-center subtitle1">
               Add items from a restaurant or store to start a new cart
             </p>
-            <Button
-              onClick={() => console.log('redirect to shopping...')}
-              className="w-full button"
-            >
+            <Button onClick={onClose} className="w-full button">
               Start shopping
             </Button>
           </>
@@ -71,10 +68,7 @@ const ShoppingCartDetails = () => {
           <span className="body2">${totalPrice.toFixed(2)}</span>
         </div>
       </div>
-      <Button
-        onClick={() => console.log('redirect to checkout...')}
-        className="mt-2 w-full shrink-0 button"
-      >
+      <Button onClick={onClose} className="mt-2 w-full shrink-0 button">
         Go to checkout
       </Button>
     </div>

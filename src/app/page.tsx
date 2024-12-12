@@ -4,16 +4,18 @@ import RestaurantsFilters from '@/components/restaurants-filter/RestaurantsFilte
 import RestaurantsSearch from '@/components/restaurants-filter/RestaurantsSearch';
 import RestaurantsSortBy from '@/components/restaurants-filter/RestaurantsSortBy';
 import RestaurantsList from '@/components/restaurants/RestaurantsList';
+import restaurantsData from '@/data/restaurants.json';
 
-// Dynamic rendering instead of Static because data of URL Search params can only be known at request time for components;
-// Also posible to wrap in Suspense, by making it CSR instead of SSR, but lossing SEO;
-export const dynamic = 'force-dynamic';
+const simulateFetchData = () => {
+  return new Promise<Restaurant[]>(resolve => {
+    setTimeout(() => {
+      resolve(restaurantsData as Restaurant[]);
+    }, 50);
+  });
+};
 
 const HomePage = async () => {
-  const res = await fetch('http://localhost:3000/api/restaurants', {
-    cache: 'force-cache',
-  });
-  const restaurantsData = await res.json();
+  const restaurantsData = await simulateFetchData();
 
   return (
     <>

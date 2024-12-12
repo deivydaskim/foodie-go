@@ -1,10 +1,10 @@
 type SwitchLabelProps = {
-  Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   children: string;
   isActive: boolean;
 };
 
-const SwitchLabel = ({ Icon, children, isActive }: SwitchLabelProps) => {
+const SwitchLabel = ({ icon: Icon, children, isActive }: SwitchLabelProps) => {
   return (
     <span className="z-10 w-1/2 text-black">
       {Icon && (

@@ -9,12 +9,12 @@ import { CloseButton, Label, Radio, RadioGroup } from '@headlessui/react';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
-export const SORT_OPTIONS = [
+const SORT_OPTIONS = [
   'Recommended',
   'Alphabet order (A-Z)',
   'Alphabet order (Z-A)',
   'Distance',
-] as const;
+];
 
 const RestaurantsSortBy = () => {
   const isMobile = useIsMobileScreen();

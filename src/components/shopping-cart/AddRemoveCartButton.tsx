@@ -4,18 +4,18 @@ import PlusIcon from '@/assets/basic-icons/add-icon.svg';
 import MinusIcon from '@/assets/basic-icons/minus-icon.svg';
 import { useShoppingCart } from '@/context/ShoppingCartContext';
 
-type FoodAddButtonProps = Pick<Dish, 'id' | 'title' | 'price'> & {
+type AddRemoveCartButtonProps = Pick<Dish, 'id' | 'title' | 'price'> & {
   restaurantName: string;
   className?: string;
 };
 
-const FoodAddButton = ({
+const AddRemoveCartButton = ({
   id,
   title,
   price,
   restaurantName,
   className,
-}: FoodAddButtonProps) => {
+}: AddRemoveCartButtonProps) => {
   const { cartItems, addToCart, decreaseQuantity } = useShoppingCart();
 
   // Find the current quantity of the dish in the cart
@@ -44,4 +44,4 @@ const FoodAddButton = ({
   );
 };
 
-export default FoodAddButton;
+export default AddRemoveCartButton;

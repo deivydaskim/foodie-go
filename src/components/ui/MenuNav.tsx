@@ -1,6 +1,6 @@
 'use client';
 
-const SectionNavigator = ({ sections }: { sections: string[] }) => {
+const MenuNavigator = ({ sections }: { sections: string[] }) => {
   const handleScroll = (value: string) => {
     const element = document.getElementById(value);
     if (element) {
@@ -24,4 +24,4 @@ const SectionNavigator = ({ sections }: { sections: string[] }) => {
   );
 };
 
-export default SectionNavigator;
+export default MenuNavigator;

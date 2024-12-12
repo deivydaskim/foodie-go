@@ -19,10 +19,10 @@ const DeliverySwitch = ({ className = '' }) => {
       <span
         className={`absolute h-7 w-[calc(50%-0.25rem)] transform rounded-full bg-white shadow-md transition-transform duration-300 ${isPickup ? 'translate-x-full' : ''}`}
       />
-      <SwitchLabel Icon={DeliveryIcon} isActive={!isPickup}>
+      <SwitchLabel icon={DeliveryIcon} isActive={!isPickup}>
         Delivery
       </SwitchLabel>
-      <SwitchLabel Icon={PickupIcon} isActive={isPickup}>
+      <SwitchLabel icon={PickupIcon} isActive={isPickup}>
         Pickup
       </SwitchLabel>
     </Switch>

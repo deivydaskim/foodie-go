@@ -2,6 +2,7 @@
 
 import { processRestaurants } from '@/lib/utils';
 import { useSearchParams } from 'next/navigation';
+import { useDeferredValue } from 'react';
 import EmptyList from './EmptyList';
 import RestaurantItem from './RestaurantsItem';
 
@@ -19,10 +20,13 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
   const category = searchParams.get('category');
   const searchQuery = searchParams.get('search');
 
+  // DeferredValue to prevent input lag on typing in input
+  const defferedSearchQuery = useDeferredValue(searchQuery);
+
   // Process restaurants with search/filter options if needed
   const processedRestaurants = processRestaurants({
     restaurants,
-    searchQuery,
+    searchQuery: defferedSearchQuery,
     category,
     openNow,
     freeDelivery,
@@ -33,7 +37,7 @@ const RestaurantsList = ({ restaurants }: RestaurantsListProps) => {
   return (
     <main className="mt-4">
       {processedRestaurants.length === 0 ? (
-        <EmptyList searchQuery={searchQuery} />
+        <EmptyList searchQuery={defferedSearchQuery} />
       ) : (
         <div className="animate-appear space-y-4">
           <h2>Order from {processedRestaurants.length} places</h2>

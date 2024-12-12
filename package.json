@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "postinstall": "node src/lib/generateMockData.js",
+    "postinstall": "node scripts/generateMockData.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -15,7 +15,7 @@
   "dependencies": {
     "@headlessui/react": "^2.1.10",
     "babel-plugin-react-compiler": "19.0.0-beta-df7b47d-20241124",
-    "next": "15.0.3",
+    "next": "^15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106"
   },

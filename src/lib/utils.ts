@@ -9,6 +9,13 @@ export const calculateDeliveryTime = (distance: number) => {
   return { deliveryTime, deliveryTimeWithDelay };
 };
 
+export const capitalizeEachWord = (str: string) => {
+  return str
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+};
+
 export const updateQueryParam = (
   key: string,
   value: string | number | boolean,
@@ -78,16 +85,6 @@ export const sortRestaurants = (
   });
 };
 
-type ProcessRestaurants = {
-  restaurants: Restaurant[];
-  searchQuery?: string | null;
-  category?: string | null;
-  openNow?: boolean;
-  freeDelivery?: boolean;
-  rating?: number;
-  sortOption?: string | null;
-};
-
 export const processRestaurants = ({
   restaurants,
   searchQuery,
@@ -96,7 +93,15 @@ export const processRestaurants = ({
   freeDelivery,
   rating = 0,
   sortOption,
-}: ProcessRestaurants): Restaurant[] => {
+}: {
+  restaurants: Restaurant[];
+  searchQuery?: string | null;
+  category?: string | null;
+  openNow?: boolean;
+  freeDelivery?: boolean;
+  rating?: number;
+  sortOption?: string | null;
+}): Restaurant[] => {
   let processedRestaurants = restaurants;
 
   if (searchQuery) {

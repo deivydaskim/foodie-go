@@ -1,33 +1,67 @@
-import FoodAddButton from '@/components/FoodAddButton';
-import RestaurantInfo from '@/components/restaurants/RestaurantInfo';
-import restaurantsData from '@/data/restaurants.json';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import ImportantIcon from '@/assets/basic-icons/important-icon.svg';
 import testDishImage from '@/assets/images/bento-1.jpg';
 import testRestaurantImage from '@/assets/images/pexels-brett-sayles-1322184.jpg';
-import SectionNavigator from '@/components/SectionNavigator';
+import RestaurantInfo from '@/components/restaurants/RestaurantInfo';
+import AddRemoveCartButton from '@/components/shopping-cart/AddRemoveCartButton';
+import MenuNavigator from '@/components/ui/MenuNav';
+import restaurantsData from '@/data/restaurants.json';
+import { capitalizeEachWord } from '@/lib/utils';
+
+const simulateFetchData = () => {
+  return new Promise<Restaurant[]>(resolve => {
+    setTimeout(() => {
+      resolve(restaurantsData as Restaurant[]);
+    }, 50);
+  });
+};
 
 export async function generateStaticParams() {
-  const restaurants = restaurantsData;
+  const restaurants = await simulateFetchData();
 
   return restaurants.map(restaurant => ({
-    slug: String(restaurant.id), // Slug must be string
+    id: String(restaurant.id), // id for params must be string
   }));
 }
 
 type Params = {
   params: Promise<{
-    slug: string;
+    id: string;
   }>;
 };
 
-export default async function Page({ params }: Params) {
-  const { slug } = await params;
+export async function generateMetadata({ params }: Params) {
+  const { id } = await params;
+  const restaurants = await simulateFetchData();
 
-  const restaurants = restaurantsData as Restaurant[];
-  const restaurant = restaurants.find(r => String(r.id) === slug);
+  const restaurant = restaurants.find(
+    restaurant => String(restaurant.id) === id,
+  );
+
+  if (!restaurant) {
+    return {
+      title: 'Restaurant Not Found',
+      description: 'The restaurant you are looking for does not exist.',
+    };
+  }
+
+  const capitalizedRestaurantName = capitalizeEachWord(restaurant.name);
+
+  return {
+    title: `${capitalizedRestaurantName} - Foodie Go`,
+    description: `Check out the menu and order from ${capitalizedRestaurantName}.`,
+  };
+}
+
+export default async function Page({ params }: Params) {
+  const { id } = await params;
+
+  const restaurants = await simulateFetchData();
+  const restaurant = restaurants.find(
+    restaurant => String(restaurant.id) === id,
+  );
 
   if (!restaurant) {
     notFound();
@@ -36,7 +70,7 @@ export default async function Page({ params }: Params) {
   const menuTitles = Object.keys(restaurant.menu);
 
   return (
-    <div className="rounded-xl bg-gray-100 px-2 py-3 md:px-4 md:py-5">
+    <div className="animate-appear rounded-xl bg-gray-100 px-2 py-3 md:px-4 md:py-5">
       <div className="h-32 rounded-lg bg-gray-300 sm:h-44">
         <Image
           className="h-full w-full rounded-lg object-cover"
@@ -54,7 +88,7 @@ export default async function Page({ params }: Params) {
         numberOfReviews={restaurant.numberOfReviews}
         rating={restaurant.rating}
       />
-      <SectionNavigator sections={menuTitles} />
+      <MenuNavigator sections={menuTitles} />
       <main>
         {menuTitles.map(title => (
           <section id={title} key={title} className="my-10">
@@ -90,7 +124,7 @@ export default async function Page({ params }: Params) {
                         height={100}
                         className="h-full rounded-lg object-cover"
                       />
-                      <FoodAddButton
+                      <AddRemoveCartButton
                         restaurantName={restaurant.name}
                         className="absolute right-2 top-2"
                         id={dish.id}

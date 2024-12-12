@@ -35,22 +35,22 @@ const RestaurantInfo = ({
   const { isPickup } = usePickupDelivery();
 
   return (
-    <div className="flex flex-col justify-between gap-2 py-3">
+    <div className="flex flex-col justify-between gap-2 px-2 py-3 sm:px-0">
       <h3 className="text-lg font-semibold capitalize">{name}</h3>
       <p className="text-gray-400 subtitle1">{categories.join(', ')}</p>
       <div className="flex flex-wrap gap-2 text-center subtitle1">
-        <InfoItem icon={<StarIcon />}>
+        <InfoItem className="after:content-['•']" icon={<StarIcon />}>
           {`${rating} (${numberOfReviews}+)`}
         </InfoItem>
-        <span>•</span>
+
         {isPickup ? (
           <InfoItem icon={<DistanceIcon />}>{`${distance} km`}</InfoItem>
         ) : (
-          <InfoItem icon={<TimeIcon />}>
+          <InfoItem className="after:content-['•']" icon={<TimeIcon />}>
             {`${deliveryTime}-${deliveryTimeWithDelay} min`}
           </InfoItem>
         )}
-        <span>•</span>
+
         {isPickup ? (
           <InfoItem icon={<LocationIcon />}>{address}</InfoItem>
         ) : (

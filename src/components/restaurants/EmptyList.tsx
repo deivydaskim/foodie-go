@@ -7,10 +7,6 @@ type EmptyListProps = {
 };
 
 const EmptyList = ({ searchQuery }: EmptyListProps) => {
-  const handleResetSearch = () => {
-    updateQueryParam('search', '');
-  };
-
   return (
     <div className="my-10 flex animate-appear flex-col items-center gap-5 p-2">
       {searchQuery ? (
@@ -18,7 +14,9 @@ const EmptyList = ({ searchQuery }: EmptyListProps) => {
           <SearchIcon width="100px" height="100px" />
           <h2>We didn&apos;t find a match for &quot;{searchQuery}&quot;</h2>
           <p>Try searching for something else instead</p>
-          <Button onClick={handleResetSearch}>Reset search</Button>
+          <Button onClick={() => updateQueryParam('search', '')}>
+            Reset search
+          </Button>
         </>
       ) : (
         <>

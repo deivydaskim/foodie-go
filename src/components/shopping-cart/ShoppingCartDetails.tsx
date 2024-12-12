@@ -2,8 +2,8 @@
 
 import ShoppingCartIcon from '@/assets/basic-icons/shopping-cart-icon.svg';
 import { useShoppingCart } from '@/context/ShoppingCartContext';
-import FoodAddButton from '../FoodAddButton';
 import Button from '../ui/Button';
+import FoodAddButton from './AddRemoveCartButton';
 
 const ShoppingCartDetails = ({ onClose }: { onClose?: () => void }) => {
   const { cartItems, groupedItems, subtotalPrice, totalPrice } =

@@ -1,9 +1,10 @@
 'use client';
 
-import { foodCategories } from '@/components/food-filter-slider/foodCategories';
 import { updateQueryParam } from '@/lib/utils';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+
+import { foodCategories } from '@/components/food-filter-slider/foodCategories';
 import ArrowButton from './ArrowButton';
 import FoodCard from './FoodCard';
 

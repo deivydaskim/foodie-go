@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 export type CartItem = {
   id: string;
@@ -8,6 +8,7 @@ export type CartItem = {
   title: string;
   quantity: number;
   restaurantName: string;
+  restaurantDeliveryFee: number;
 };
 
 type AddCartItem = Omit<CartItem, 'quantity'>;
@@ -18,6 +19,7 @@ type ShoppingCartContextType = {
   subtotalPrice: number;
   totalPrice: number;
   totalItems: number;
+  totalDeliveryFee: number;
   addToCart: (item: AddCartItem) => void;
   increaseQuantity: (id: string) => void;
   decreaseQuantity: (id: string) => void;
@@ -59,27 +61,30 @@ export const ShoppingCartProvider = ({
 
   const decreaseQuantity = (id: string) => updateQuantity(id, -1);
 
-  const groupedItems = useMemo(() => {
-    const map = new Map<string, CartItem[]>();
-    cartItems.forEach(item => {
-      if (!map.has(item.restaurantName)) {
-        map.set(item.restaurantName, []);
-      }
-      map.get(item.restaurantName)!.push(item);
-    });
+  const uniqueRestaurantNames = Array.from(
+    new Set(cartItems.map(item => item.restaurantName)),
+  );
 
-    // Convert the Map to an array of key-value pairs
-    return Array.from(map.entries());
-  }, [cartItems]);
+  const groupedItems = uniqueRestaurantNames.map(name => {
+    return [name, cartItems.filter(item => item.restaurantName === name)] as [
+      string,
+      CartItem[],
+    ];
+  });
+
+  const totalDeliveryFee = uniqueRestaurantNames.reduce((total, name) => {
+    const restaurantDeliveryFee =
+      cartItems.find(item => item.restaurantName === name)
+        ?.restaurantDeliveryFee ?? 0;
+    return total + restaurantDeliveryFee;
+  }, 0);
 
   const subtotalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0,
   );
 
-  // Later store fee for delivery from each restaurant and add it to total price;
-  const DELIVERY_FEE = 0;
-  const totalPrice = subtotalPrice + DELIVERY_FEE;
+  const totalPrice = subtotalPrice + totalDeliveryFee;
 
   const totalItems = cartItems.reduce(
     (count, item) => count + item.quantity,
@@ -94,6 +99,7 @@ export const ShoppingCartProvider = ({
         totalItems,
         subtotalPrice,
         totalPrice,
+        totalDeliveryFee,
         addToCart,
         increaseQuantity,
         decreaseQuantity,

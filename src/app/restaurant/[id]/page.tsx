@@ -125,6 +125,7 @@ export default async function Page({ params }: Params) {
                         className="h-full rounded-lg object-cover"
                       />
                       <AddRemoveCartButton
+                        restaurantDeliveryFee={restaurant.deliveryFee}
                         restaurantName={restaurant.name}
                         className="absolute right-2 top-2"
                         id={dish.id}

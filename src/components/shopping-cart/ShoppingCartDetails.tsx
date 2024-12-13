@@ -6,8 +6,13 @@ import Button from '../ui/Button';
 import FoodAddButton from './AddRemoveCartButton';
 
 const ShoppingCartDetails = ({ onClose }: { onClose?: () => void }) => {
-  const { cartItems, groupedItems, subtotalPrice, totalPrice } =
-    useShoppingCart();
+  const {
+    cartItems,
+    groupedItems,
+    subtotalPrice,
+    totalPrice,
+    totalDeliveryFee,
+  } = useShoppingCart();
 
   if (cartItems.length === 0) {
     return (
@@ -48,6 +53,7 @@ const ShoppingCartDetails = ({ onClose }: { onClose?: () => void }) => {
                 id={item.id}
                 title={item.title}
                 price={item.price}
+                restaurantDeliveryFee={item.restaurantDeliveryFee}
               />
             </div>
           ))}
@@ -61,7 +67,7 @@ const ShoppingCartDetails = ({ onClose }: { onClose?: () => void }) => {
         </div>
         <div className="flex justify-between">
           <span className="subtitle1">Delivery Costs</span>
-          <span className="body2">Free</span>
+          <span className="body2">${totalDeliveryFee.toFixed(2)}</span>
         </div>
         <div className="flex justify-between">
           <span className="subtitle1">Total</span>

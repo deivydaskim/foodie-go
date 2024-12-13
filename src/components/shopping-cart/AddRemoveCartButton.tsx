@@ -6,6 +6,7 @@ import { useShoppingCart } from '@/context/ShoppingCartContext';
 
 type AddRemoveCartButtonProps = Pick<Dish, 'id' | 'title' | 'price'> & {
   restaurantName: string;
+  restaurantDeliveryFee: number;
   className?: string;
 };
 
@@ -14,6 +15,7 @@ const AddRemoveCartButton = ({
   title,
   price,
   restaurantName,
+  restaurantDeliveryFee,
   className,
 }: AddRemoveCartButtonProps) => {
   const { cartItems, addToCart, decreaseQuantity } = useShoppingCart();
@@ -36,7 +38,9 @@ const AddRemoveCartButton = ({
       )}
       <button
         className="h-6 w-6"
-        onClick={() => addToCart({ id, title, price, restaurantName })}
+        onClick={() =>
+          addToCart({ id, title, price, restaurantName, restaurantDeliveryFee })
+        }
       >
         <PlusIcon />
       </button>

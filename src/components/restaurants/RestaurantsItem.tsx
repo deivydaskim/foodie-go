@@ -33,10 +33,11 @@ const RestaurantsItem = ({
     >
       <div className="h-28 w-full shrink-0 rounded-se-lg text-center sm:h-auto sm:w-40 sm:rounded-xl">
         <Image
+          priority
           className="h-full w-full rounded-tl-xl rounded-tr-xl object-cover sm:rounded-xl"
           src={testRestaurantImage}
           alt={name}
-          width={500}
+          width={300}
         />
       </div>
       <RestaurantInfo

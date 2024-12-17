@@ -15,7 +15,7 @@ import Vegan from '@/assets/food-icons/vegan-icon.svg';
 
 export type Category = {
   title: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
 };
 
 export const foodCategories: Category[] = [

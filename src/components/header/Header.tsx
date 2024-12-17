@@ -1,10 +1,10 @@
 import NavigationIcon from '@/assets/basic-icons/localization-icon.svg';
 import Logo from '@/assets/basic-icons/Logo.svg';
-import MenuIcon from '@/assets/basic-icons/navigation-icon.svg';
 import Link from 'next/link';
 import ShoppingCartButton from '../shopping-cart/ShoppingCartButton';
 import Button from '../ui/Button';
 import DeliverySwitch from './DeliverySwitch';
+import HeaderMobileMenu from './HeaderMobileMenu';
 
 const Header = () => {
   return (
@@ -32,9 +32,9 @@ const Header = () => {
             <Button className="hidden lg:block" variant="primary">
               Create account
             </Button>
-            <Button className="block lg:hidden" variant="rounded">
-              <MenuIcon />
-            </Button>
+            <div className="lg:hidden">
+              <HeaderMobileMenu />
+            </div>
           </div>
         </div>
       </header>

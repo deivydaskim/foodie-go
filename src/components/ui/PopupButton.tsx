@@ -43,6 +43,5 @@ const PopupButton = ({
     </Popover>
   );
 };
-PopupButton.displayName = 'PopupButton';
 
 export default PopupButton;

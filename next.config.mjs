@@ -12,6 +12,7 @@ const nextConfig = {
   experimental: {
     reactCompiler: true, // Enable the React Compiler for React 19
   },
+  output: 'standalone',
 };
 
 export default nextConfig;

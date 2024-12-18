@@ -73,6 +73,8 @@ export default async function Page({ params }: Params) {
     <div className="animate-appear rounded-xl bg-gray-100 px-2 py-3 md:px-4 md:py-5">
       <div className="h-32 rounded-lg bg-gray-300 sm:h-44">
         <Image
+          priority
+          placeholder="blur"
           className="h-full w-full rounded-lg object-cover"
           src={testRestaurantImage}
           alt={restaurant.name}
@@ -118,7 +120,8 @@ export default async function Page({ params }: Params) {
                     </div>
                     <div className="relative h-24 w-28 self-center rounded-xl bg-gray-300 text-center">
                       <Image
-                        alt="image"
+                        placeholder="blur"
+                        alt={dish.title}
                         src={testDishImage}
                         width={150}
                         height={100}

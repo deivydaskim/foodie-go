@@ -33,6 +33,7 @@ const RestaurantsItem = ({
     >
       <div className="h-28 w-full shrink-0 rounded-se-lg text-center sm:h-auto sm:w-40 sm:rounded-xl">
         <Image
+          placeholder="blur"
           priority
           className="h-full w-full rounded-tl-xl rounded-tr-xl object-cover sm:rounded-xl"
           src={testRestaurantImage}

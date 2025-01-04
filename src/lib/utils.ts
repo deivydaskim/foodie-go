@@ -1,3 +1,20 @@
+import { FoodCategories, Restaurant } from '@/types/restaurant';
+
+export const formatPrice = (
+  amount: number,
+  currency = 'USD',
+  locale = 'en-US',
+): string => {
+  const formatter = new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  return formatter.format(amount);
+};
+
 export const calculateDeliveryTime = (distance: number) => {
   const BASE_TIME = 10;
   const TIME_FOR_KM = 5;

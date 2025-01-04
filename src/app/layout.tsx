@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-
-import Header from '@/components/header/Header';
 import './globals.css';
 
+import Header from '@/components/header/Header';
 import { PickupDeliveryProvider } from '@/context/PickupDeliveryContext';
 import { ShoppingCartProvider } from '@/context/ShoppingCartContext';
 

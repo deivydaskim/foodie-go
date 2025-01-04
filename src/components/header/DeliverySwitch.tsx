@@ -1,10 +1,11 @@
 'use client';
 
+import { Switch } from '@headlessui/react';
+
 import DeliveryIcon from '@/assets/basic-icons/delivery-icon.svg';
 import PickupIcon from '@/assets/basic-icons/pickup-icon.svg';
+import SwitchLabel from '@/components/header/SwitchLabel';
 import { usePickupDelivery } from '@/context/PickupDeliveryContext';
-import { Switch } from '@headlessui/react';
-import SwitchLabel from './SwitchLabel';
 
 const DeliverySwitch = ({ className = '' }) => {
   const { isPickup, togglePickupDelivery } = usePickupDelivery();

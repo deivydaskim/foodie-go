@@ -1,13 +1,14 @@
 'use client';
 
+import { Field, Label, Radio, RadioGroup } from '@headlessui/react';
+import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
+
 import StarFilled from '@/assets/basic-icons/star-filled-icon.svg';
 import StarOutline from '@/assets/basic-icons/star-outline.svg';
 import ToggleSwitch from '@/components/ui/ToggleSwitch';
 import { usePickupDelivery } from '@/context/PickupDeliveryContext';
 import { updateQueryParam } from '@/lib/utils';
-import { Field, Label, Radio, RadioGroup } from '@headlessui/react';
-import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
 
 const STAR_RATINGS = [1, 2, 3, 4, 5];
 

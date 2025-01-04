@@ -1,13 +1,14 @@
 'use client';
 
-import FilterIcon from '@/assets/basic-icons/filter-icon.svg';
-import Button from '@/components/ui/Button';
-import useIsMobileScreen from '@/hooks/useIsMobileScreen';
 import { useState } from 'react';
-import Drawer from '../ui/Drawer';
-import PopupButton from '../ui/PopupButton';
-import RestaurantsFilters from './RestaurantsFilters';
-import RestaurantsSortBy from './RestaurantsSortBy';
+
+import FilterIcon from '@/assets/basic-icons/filter-icon.svg';
+import RestaurantsFilters from '@/components/restaurants-filter/RestaurantsFilters';
+import RestaurantsSortBy from '@/components/restaurants-filter/RestaurantsSortBy';
+import Button from '@/components/ui/Button';
+import Drawer from '@/components/ui/Drawer';
+import PopupButton from '@/components/ui/PopupButton';
+import useIsMobileScreen from '@/hooks/useIsMobileScreen';
 
 const FiltersMenuButton = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

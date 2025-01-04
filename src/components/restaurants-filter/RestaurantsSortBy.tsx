@@ -1,13 +1,14 @@
 'use client';
 
+import { CloseButton, Label, Radio, RadioGroup } from '@headlessui/react';
+import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
+
 import ArrowDownIcon from '@/assets/basic-icons/arrow-down-icon.svg';
 import Button from '@/components/ui/Button';
 import PopupButton from '@/components/ui/PopupButton';
 import useIsMobileScreen from '@/hooks/useIsMobileScreen';
 import { updateQueryParam } from '@/lib/utils';
-import { CloseButton, Label, Radio, RadioGroup } from '@headlessui/react';
-import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
 
 const SORT_OPTIONS = [
   'Recommended',

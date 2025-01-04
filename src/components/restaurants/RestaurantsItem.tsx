@@ -2,7 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import testRestaurantImage from '@/assets/images/pexels-brett-sayles-1322184.jpg';
-import RestaurantInfo from './RestaurantInfo';
+import RestaurantInfo from '@/components/restaurants/RestaurantInfo';
+import { Restaurant } from '@/types/restaurant';
 
 type RestaurantsItemProps = Pick<
   Restaurant,

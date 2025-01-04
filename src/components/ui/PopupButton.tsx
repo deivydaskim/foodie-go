@@ -15,6 +15,15 @@ type PopupButtonProps = {
   anchor?: React.ComponentProps<typeof PopoverPanel>['anchor'];
 };
 
+// The `children` for PopupButton can either be a React node or a function that receives an object with a `close` method.
+// If using a function as children, you can call `close()` to programmatically close the Panel, for example:
+// {({ close }) => (
+//   <>
+//     ...
+//     <button onClick={close}>Close</button>
+//   </>
+// )}
+
 const PopupButton = ({
   children,
   button,
@@ -34,7 +43,7 @@ const PopupButton = ({
           <PopoverPanel
             transition
             anchor={anchor}
-            className="z-20 mt-2 w-80 rounded-lg bg-white shadow-lg transition duration-200 ease-in-out data-[closed]:-translate-y-2 data-[closed]:opacity-0"
+            className="z-20 mt-2 w-80 rounded-lg bg-white shadow-lg transition duration-200 ease-in-out scrollbar-thin data-[closed]:-translate-y-2 data-[closed]:opacity-0 sm:!max-h-96"
           >
             {typeof children === 'function' ? children({ close }) : children}
           </PopoverPanel>

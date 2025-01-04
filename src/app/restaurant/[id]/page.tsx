@@ -8,7 +8,8 @@ import RestaurantInfo from '@/components/restaurants/RestaurantInfo';
 import AddRemoveCartButton from '@/components/shopping-cart/AddRemoveCartButton';
 import MenuNavigator from '@/components/ui/MenuNav';
 import restaurantsData from '@/data/restaurants.json';
-import { capitalizeEachWord } from '@/lib/utils';
+import { capitalizeEachWord, formatPrice } from '@/lib/utils';
+import { Restaurant } from '@/types/restaurant';
 
 const simulateFetchData = () => {
   return new Promise<Restaurant[]>(resolve => {
@@ -113,7 +114,7 @@ export default async function Page({ params }: Params) {
                   >
                     <div className="basis-2/3 space-y-2">
                       <h5 className="body2">{dish.title}</h5>
-                      <p className="subtitle1">${dish.price.toFixed(2)}</p>
+                      <p className="subtitle1">{formatPrice(dish.price)}</p>
                       <p className="line-clamp-2 text-gray-400 subtitle2">
                         {dish.description}
                       </p>
@@ -130,7 +131,7 @@ export default async function Page({ params }: Params) {
                       <AddRemoveCartButton
                         restaurantDeliveryFee={restaurant.deliveryFee}
                         restaurantName={restaurant.name}
-                        className="absolute right-2 top-2"
+                        classes="absolute right-2 top-2"
                         id={dish.id}
                         title={dish.title}
                         price={dish.price}

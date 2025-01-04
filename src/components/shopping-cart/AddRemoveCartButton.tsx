@@ -3,11 +3,12 @@
 import PlusIcon from '@/assets/basic-icons/add-icon.svg';
 import MinusIcon from '@/assets/basic-icons/minus-icon.svg';
 import { useShoppingCart } from '@/context/ShoppingCartContext';
+import { Dish } from '@/types/restaurant';
 
 type AddRemoveCartButtonProps = Pick<Dish, 'id' | 'title' | 'price'> & {
   restaurantName: string;
   restaurantDeliveryFee: number;
-  className?: string;
+  classes?: string;
 };
 
 const AddRemoveCartButton = ({
@@ -16,7 +17,7 @@ const AddRemoveCartButton = ({
   price,
   restaurantName,
   restaurantDeliveryFee,
-  className,
+  classes,
 }: AddRemoveCartButtonProps) => {
   const { cartItems, addToCart, decreaseQuantity } = useShoppingCart();
 
@@ -26,7 +27,7 @@ const AddRemoveCartButton = ({
 
   return (
     <div
-      className={`flex items-center justify-center rounded-full bg-blueGray-100 ${className ? className : ''}`}
+      className={`flex items-center justify-center rounded-full bg-blueGray-100 ${classes ? classes : ''}`}
     >
       {itemInCart && (
         <>

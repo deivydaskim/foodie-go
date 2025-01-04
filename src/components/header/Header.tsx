@@ -1,10 +1,11 @@
+import Link from 'next/link';
+
 import NavigationIcon from '@/assets/basic-icons/localization-icon.svg';
 import Logo from '@/assets/basic-icons/Logo.svg';
-import Link from 'next/link';
-import ShoppingCartButton from '../shopping-cart/ShoppingCartButton';
-import Button from '../ui/Button';
-import DeliverySwitch from './DeliverySwitch';
-import HeaderMobileMenu from './HeaderMobileMenu';
+import DeliverySwitch from '@/components/header/DeliverySwitch';
+import HeaderMobileMenu from '@/components/header/HeaderMobileMenu';
+import ShoppingCartButton from '@/components/shopping-cart/ShoppingCartButton';
+import Button from '@/components/ui/Button';
 
 const Header = () => {
   return (

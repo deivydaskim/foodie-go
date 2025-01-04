@@ -2,7 +2,7 @@
 
 import MenuIcon from '@/assets/basic-icons/navigation-icon.svg';
 import Button from '@/components/ui/Button';
-import PopupButton from '../ui/PopupButton';
+import PopupButton from '@/components/ui/PopupButton';
 
 const HeaderMobileMenu = () => {
   const handleSignIn = (close: () => void) => {

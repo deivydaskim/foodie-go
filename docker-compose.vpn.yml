@@ -2,8 +2,6 @@ services:
   nextjs:
     image: ghcr.io/deivydaskim/foodie-go-nextjs:latest
     container_name: nextjs-app
-    environment:
-      - PORT=3000
     expose:
       - '3000'
     restart: always

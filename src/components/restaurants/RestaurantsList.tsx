@@ -1,10 +1,12 @@
 'use client';
 
-import { processRestaurants } from '@/lib/utils';
 import { useSearchParams } from 'next/navigation';
 import { useDeferredValue } from 'react';
-import EmptyList from './EmptyList';
-import RestaurantItem from './RestaurantsItem';
+
+import EmptyList from '@/components/restaurants/EmptyList';
+import RestaurantItem from '@/components/restaurants/RestaurantsItem';
+import { processRestaurants } from '@/lib/utils';
+import { Restaurant } from '@/types/restaurant';
 
 type RestaurantsListProps = {
   restaurants: Restaurant[];

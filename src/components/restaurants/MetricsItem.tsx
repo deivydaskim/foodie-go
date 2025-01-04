@@ -1,10 +1,10 @@
-type InfoItemProps = {
+type MetricsItemProps = {
   icon: React.ReactNode;
   children: string | React.ReactNode;
   className?: string;
 };
 
-const InfoItem = ({ icon, children, className }: InfoItemProps) => {
+const MetricsItem = ({ icon, children, className }: MetricsItemProps) => {
   return (
     <div className={`flex justify-center gap-1 ${className && className}`}>
       <span className="text-green">{icon}</span>
@@ -13,4 +13,4 @@ const InfoItem = ({ icon, children, className }: InfoItemProps) => {
   );
 };
 
-export default InfoItem;
+export default MetricsItem;

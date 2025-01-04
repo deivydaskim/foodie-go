@@ -5,14 +5,15 @@ import RestaurantsSearch from '@/components/restaurants-filter/RestaurantsSearch
 import RestaurantsSortBy from '@/components/restaurants-filter/RestaurantsSortBy';
 import RestaurantsList from '@/components/restaurants/RestaurantsList';
 import restaurantsData from '@/data/restaurants.json';
+import { Restaurant } from '@/types/restaurant';
 
-const simulateFetchData = () => {
+function simulateFetchData() {
   return new Promise<Restaurant[]>(resolve => {
     setTimeout(() => {
       resolve(restaurantsData as Restaurant[]);
     }, 50);
   });
-};
+}
 
 const HomePage = async () => {
   const restaurantsData = await simulateFetchData();

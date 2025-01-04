@@ -1,6 +1,6 @@
 import SearchIcon from '@/assets/basic-icons/search-icon.svg';
+import Button from '@/components/ui/Button';
 import { updateQueryParam } from '@/lib/utils';
-import Button from '../ui/Button';
 
 type EmptyListProps = {
   searchQuery: string | null;

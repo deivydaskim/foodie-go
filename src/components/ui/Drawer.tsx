@@ -1,7 +1,8 @@
 'use client';
 
-import BackIcon from '@/assets/basic-icons/back-button.svg';
 import { useEffect, useRef, useState } from 'react';
+
+import BackIcon from '@/assets/basic-icons/back-button.svg';
 
 type DrawerProps = {
   title: string;

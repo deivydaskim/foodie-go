@@ -1,8 +1,9 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
+
 import SearchIcon from '@/assets/basic-icons/search-icon.svg';
 import { updateQueryParam } from '@/lib/utils';
-import { useSearchParams } from 'next/navigation';
 
 const RestaurantsSearch = () => {
   const searchParams = useSearchParams();

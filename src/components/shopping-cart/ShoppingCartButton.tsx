@@ -1,13 +1,14 @@
 'use client';
 
+import { useState } from 'react';
+
 import ShoppingCartIcon from '@/assets/basic-icons/shopping-cart-icon.svg';
+import ShoppingCartDetails from '@/components/shopping-cart/ShoppingCartDetails';
+import Button from '@/components/ui/Button';
+import Drawer from '@/components/ui/Drawer';
+import PopupButton from '@/components/ui/PopupButton';
 import { useShoppingCart } from '@/context/ShoppingCartContext';
 import useIsMobileScreen from '@/hooks/useIsMobileScreen';
-import { useState } from 'react';
-import Button from '../ui/Button';
-import Drawer from '../ui/Drawer';
-import PopupButton from '../ui/PopupButton';
-import ShoppingCartDetails from './ShoppingCartDetails';
 
 const ShoppingCartButton = () => {
   const isMobile = useIsMobileScreen();

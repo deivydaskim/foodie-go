@@ -1,11 +1,11 @@
-type Dish = {
+export type Dish = {
   title: string;
   price: number;
   description: string;
   id: string;
 };
 
-type Menu = {
+export type Menu = {
   popular: Dish[];
   lunch: Dish[];
   appetizers: Dish[];
@@ -15,7 +15,7 @@ type Menu = {
   chefsPicks: Dish[];
 };
 
-type FoodCategories =
+export type FoodCategories =
   | 'Asian'
   | 'Breakfast'
   | 'Burger'
@@ -31,7 +31,7 @@ type FoodCategories =
   | 'Sushi'
   | 'Vegan';
 
-type Restaurant = {
+export type Restaurant = {
   id: number;
   name: string;
   categories: FoodCategories[];

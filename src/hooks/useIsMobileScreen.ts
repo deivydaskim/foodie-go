@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const useIsMobileScreen = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false); // Default for SSR
 
   useEffect(() => {
     const mediaQueryList = window.matchMedia('(max-width: 640px)');

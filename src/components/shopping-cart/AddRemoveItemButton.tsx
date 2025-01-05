@@ -3,22 +3,22 @@
 import PlusIcon from '@/assets/basic-icons/add-icon.svg';
 import MinusIcon from '@/assets/basic-icons/minus-icon.svg';
 import { useShoppingCart } from '@/context/ShoppingCartContext';
-import { Dish } from '@/types/restaurant';
+import type { Dish } from '@/types/restaurant';
 
-type AddRemoveCartButtonProps = Pick<Dish, 'id' | 'title' | 'price'> & {
+type AddRemoveItemButtonProps = Pick<Dish, 'id' | 'title' | 'price'> & {
   restaurantName: string;
   restaurantDeliveryFee: number;
   classes?: string;
 };
 
-const AddRemoveCartButton = ({
+const AddRemoveItemButton = ({
   id,
   title,
   price,
   restaurantName,
   restaurantDeliveryFee,
   classes,
-}: AddRemoveCartButtonProps) => {
+}: AddRemoveItemButtonProps) => {
   const { cartItems, addToCart, decreaseQuantity } = useShoppingCart();
 
   // Find the current quantity of the dish in the cart
@@ -49,4 +49,4 @@ const AddRemoveCartButton = ({
   );
 };
 
-export default AddRemoveCartButton;
+export default AddRemoveItemButton;

@@ -1,8 +1,14 @@
-export type Dish = {
-  title: string;
-  price: number;
-  description: string;
-  id: string;
+export type Restaurant = {
+  id: number;
+  name: string;
+  categories: string[];
+  rating: number;
+  numberOfReviews: number;
+  distance: number;
+  address: string;
+  deliveryFee: number;
+  isOpen: boolean;
+  menu: Menu;
 };
 
 export type Menu = {
@@ -15,31 +21,9 @@ export type Menu = {
   chefsPicks: Dish[];
 };
 
-export type FoodCategories =
-  | 'Asian'
-  | 'Breakfast'
-  | 'Burger'
-  | 'Dessert'
-  | 'Fast Food'
-  | 'Healthy'
-  | 'Ice Cream'
-  | 'Indian'
-  | 'Italian'
-  | 'Korean'
-  | 'Pizza'
-  | 'Seafood'
-  | 'Sushi'
-  | 'Vegan';
-
-export type Restaurant = {
-  id: number;
-  name: string;
-  categories: FoodCategories[];
-  rating: number;
-  numberOfReviews: number;
-  distance: number;
-  address: string;
-  deliveryFee: number;
-  isOpen: boolean;
-  menu: Menu;
+export type Dish = {
+  title: string;
+  price: number;
+  description: string;
+  id: string;
 };

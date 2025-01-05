@@ -1,12 +1,14 @@
 'use client';
 
 import ShoppingCartIcon from '@/assets/basic-icons/shopping-cart-icon.svg';
-import FoodAddButton from '@/components/shopping-cart/AddRemoveCartButton';
+import AddRemoveItemButton from '@/components/shopping-cart/AddRemoveItemButton';
 import Button from '@/components/ui/Button';
 import { useShoppingCart } from '@/context/ShoppingCartContext';
 import { formatPrice } from '@/lib/utils';
 
-const ShoppingCartDetails = ({ onClose }: { onClose?: () => void }) => {
+type ShoppingCartDetailsProps = { closeCart: () => void };
+
+const ShoppingCartDetails = ({ closeCart }: ShoppingCartDetailsProps) => {
   const { groupedItems, subtotalPrice, totalPrice, totalDeliveryFee } =
     useShoppingCart();
 
@@ -18,12 +20,17 @@ const ShoppingCartDetails = ({ onClose }: { onClose?: () => void }) => {
         <p className="text-center subtitle1">
           Add items from a restaurant or store to start a new cart
         </p>
-        <Button onClick={onClose} className="w-full button">
+        <Button onClick={closeCart} className="w-full button">
           Start shopping
         </Button>
       </div>
     );
   }
+
+  const handleCheckout = () => {
+    closeCart();
+    console.log('OPEN CHECKOUT');
+  };
 
   return (
     <div className="flex h-full flex-col gap-4 sm:px-7 sm:py-6">
@@ -41,7 +48,7 @@ const ShoppingCartDetails = ({ onClose }: { onClose?: () => void }) => {
                   <h5 className="capitalize body2">{`${item.quantity} ${item.title}`}</h5>
                   <span className="subtitle1">{formatPrice(item.price)}</span>
                 </div>
-                <FoodAddButton
+                <AddRemoveItemButton
                   restaurantName={item.restaurantName}
                   id={item.id}
                   title={item.title}
@@ -68,7 +75,7 @@ const ShoppingCartDetails = ({ onClose }: { onClose?: () => void }) => {
           <span className="body2">{formatPrice(totalPrice)}</span>
         </div>
       </div>
-      <Button onClick={onClose} className="mt-2 w-full shrink-0 button">
+      <Button onClick={handleCheckout} className="mt-2 w-full shrink-0 button">
         Go to checkout
       </Button>
     </div>

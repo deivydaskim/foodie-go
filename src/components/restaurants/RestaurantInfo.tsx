@@ -8,7 +8,7 @@ import TimeIcon from '@/assets/basic-icons/time.svg';
 import MetricsItem from '@/components/restaurants/MetricsItem';
 import { usePickupDelivery } from '@/context/PickupDeliveryContext';
 import { calculateDeliveryTime, formatPrice } from '@/lib/utils';
-import { Restaurant } from '@/types/restaurant';
+import type { Restaurant } from '@/types/restaurant';
 
 type RestaurantInfoProps = Pick<
   Restaurant,

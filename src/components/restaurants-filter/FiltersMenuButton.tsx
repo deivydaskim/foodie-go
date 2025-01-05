@@ -9,13 +9,23 @@ import Button from '@/components/ui/Button';
 import Drawer from '@/components/ui/Drawer';
 import PopupButton from '@/components/ui/PopupButton';
 import useIsMobileScreen from '@/hooks/useIsMobileScreen';
+//import usePreventScrollbarShift from '@/hooks/usePreventScrollbarShift';
 
 const FiltersMenuButton = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const isMobile = useIsMobileScreen();
+  //const { enableScrollLock, disableScrollLock } = usePreventScrollbarShift();
 
-  const closeDrawer = () => setIsDrawerOpen(false);
-  const openDrawer = () => setIsDrawerOpen(true);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+    //disableScrollLock();
+  };
+
+  const openDrawer = () => {
+    setIsDrawerOpen(true);
+    // enableScrollLock();
+  };
 
   const FiltersContent = ({ onClose }: { onClose: () => void }) => (
     <div className="flex h-full flex-col gap-6 sm:px-4 sm:py-6 md:p-0">

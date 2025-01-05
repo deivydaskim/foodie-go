@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import BackIcon from '@/assets/basic-icons/back-button.svg';
 
@@ -11,22 +11,26 @@ type DrawerProps = {
 };
 
 const Drawer = ({ title, onClose, children }: DrawerProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const startXRef = useRef(0);
+  const [isVisible, setIsVisible] = useState(false); // For animation
   const [isSwiping, setIsSwiping] = useState(false);
+  const startXRef = useRef(0);
 
   const ANIMATION_DURATION = 200;
   const SWIPE_AMOUNT_TO_CLOSE = 100;
 
+  const closeDrawer = useCallback(() => {
+    setIsVisible(false);
+    setTimeout(onClose, ANIMATION_DURATION);
+  }, [onClose]);
+
   useEffect(() => {
-    // Trigger animation
     setIsVisible(true);
-    // Disable scroll on body when drawer is opened
+    // Disable scrollbar on body when drawer is opened
     document.body.style.overflow = 'hidden';
 
     const handleEscPress = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        handleClose();
+        closeDrawer();
       }
     };
 
@@ -36,13 +40,7 @@ const Drawer = ({ title, onClose, children }: DrawerProps) => {
       window.removeEventListener('keydown', handleEscPress);
       document.body.style.overflow = '';
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const handleClose = () => {
-    setIsVisible(false);
-    setTimeout(onClose, ANIMATION_DURATION);
-  };
+  }, [closeDrawer]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     startXRef.current = e.touches[0].clientX;
@@ -54,7 +52,7 @@ const Drawer = ({ title, onClose, children }: DrawerProps) => {
 
     const touchMoveX = e.touches[0].clientX;
     if (touchMoveX - startXRef.current > SWIPE_AMOUNT_TO_CLOSE) {
-      handleClose();
+      closeDrawer();
     }
   };
 
@@ -72,7 +70,7 @@ const Drawer = ({ title, onClose, children }: DrawerProps) => {
       onTouchEnd={handleTouchEnd}
     >
       <div className="flex h-full w-full flex-col bg-white">
-        <div onClick={handleClose} className="flex items-center gap-2 p-4">
+        <div onClick={closeDrawer} className="flex items-center gap-2 p-4">
           <button>
             <BackIcon />
           </button>

@@ -4,13 +4,14 @@ import RestaurantsFilters from '@/components/restaurants-filter/RestaurantsFilte
 import RestaurantsSearch from '@/components/restaurants-filter/RestaurantsSearch';
 import RestaurantsSortBy from '@/components/restaurants-filter/RestaurantsSortBy';
 import RestaurantsList from '@/components/restaurants/RestaurantsList';
+import type { Restaurant } from '@/types/restaurant';
+
 import restaurantsData from '@/data/restaurants.json';
-import { Restaurant } from '@/types/restaurant';
 
 function simulateFetchData() {
   return new Promise<Restaurant[]>(resolve => {
     setTimeout(() => {
-      resolve(restaurantsData as Restaurant[]);
+      resolve(restaurantsData);
     }, 50);
   });
 }

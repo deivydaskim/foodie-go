@@ -1,5 +1,5 @@
 type FoodCard = {
-  icon: React.ReactElement;
+  icon: React.ReactNode;
   title: string;
   isActive: boolean;
   onClick: () => void;

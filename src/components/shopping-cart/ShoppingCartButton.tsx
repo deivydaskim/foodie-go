@@ -37,13 +37,13 @@ const ShoppingCartButton = () => {
       {cartButton}
       {isDrawerOpen && (
         <Drawer title="Shopping Cart" onClose={closeDrawer}>
-          <ShoppingCartDetails onClose={closeDrawer} />
+          <ShoppingCartDetails closeCart={closeDrawer} />
         </Drawer>
       )}
     </>
   ) : (
     <PopupButton button={cartButton}>
-      {({ close }) => <ShoppingCartDetails onClose={close} />}
+      {({ close }) => <ShoppingCartDetails closeCart={close} />}
     </PopupButton>
   );
 };

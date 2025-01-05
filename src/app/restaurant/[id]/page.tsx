@@ -5,11 +5,11 @@ import ImportantIcon from '@/assets/basic-icons/important-icon.svg';
 import testDishImage from '@/assets/images/bento-1.jpg';
 import testRestaurantImage from '@/assets/images/pexels-brett-sayles-1322184.jpg';
 import RestaurantInfo from '@/components/restaurants/RestaurantInfo';
-import AddRemoveCartButton from '@/components/shopping-cart/AddRemoveCartButton';
+import AddRemoveItemButton from '@/components/shopping-cart/AddRemoveItemButton';
 import MenuNavigator from '@/components/ui/MenuNav';
 import restaurantsData from '@/data/restaurants.json';
 import { capitalizeEachWord, formatPrice } from '@/lib/utils';
-import { Restaurant } from '@/types/restaurant';
+import type { Restaurant } from '@/types/restaurant';
 
 const simulateFetchData = () => {
   return new Promise<Restaurant[]>(resolve => {
@@ -128,7 +128,7 @@ export default async function Page({ params }: Params) {
                         height={100}
                         className="h-full rounded-lg object-cover"
                       />
-                      <AddRemoveCartButton
+                      <AddRemoveItemButton
                         restaurantDeliveryFee={restaurant.deliveryFee}
                         restaurantName={restaurant.name}
                         classes="absolute right-2 top-2"

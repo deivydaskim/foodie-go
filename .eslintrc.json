@@ -8,7 +8,7 @@
     "plugin:@typescript-eslint/recommended" // TypeScript rules
   ],
   "rules": {
-    // "@typescript-eslint/consistent-type-imports": "warn" // Use 'import type' consistently
+    "@typescript-eslint/consistent-type-imports": "warn" // Use 'import type' consistently
   },
   "env": {
     "browser": true,
